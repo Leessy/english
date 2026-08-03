@@ -1,0 +1,3874 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://www.ntceonline.com/artpc/courseAction!produceExam.action?testId=6560 -->
+<html class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>2014年学位外国语水平考试</title>
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/png" href="https://www.ntceonline.com/artpc/assets/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="https://www.ntceonline.com/artpc/assets/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI">
+  <link rel="apple-touch-icon-precomposed" href="https://www.ntceonline.com/artpc/assets/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/artpc/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/">
+  -->
+	<link rel="stylesheet" href="./2014年学位外国语水平考试_files/amazeui.min.css">
+	<link rel="stylesheet" href="./2014年学位外国语水平考试_files/app.css">
+	<script type="text/javascript" src="./2014年学位外国语水平考试_files/jquery-1.11.3.min.js.下载"></script>
+</head>
+<body>
+   <script type="text/javascript">
+   		function showAnswer(obj){
+   			var c1 = "#d"+obj;
+   			$(c1).show();
+   			statScore();
+   		}
+   		function showAll(){
+	   		var sp = $("span:hidden");
+	   		$.each(sp,function(i,obj){
+	   			$(obj).show();
+	   		})
+	   		var divs = $("div:hidden");
+	   		$.each(divs,function(i,obj){
+	   			$(obj).show();
+	   		})
+	   		statScore();
+   		}
+  		var cnt1=0;
+  		var cnt2=0;
+   		function statScore(){
+   			var sp = $("span");
+   			var totalScore=0;
+   			cnt1=0;
+   			cnt2=0;
+   			$.each(sp,function(i,obj){
+   				if($(obj).attr("answer")!=null){
+   					cnt1++;
+   				}
+	   			var id = obj.id;
+	   			id = id.substring(1);
+	   			var c1 = "#d"+id;
+	   			var c2 = "input[name=dx"+id +"]:checked";
+	   			var c3="#d"+id+"d";
+	   			var c4="#d"+id+"dd";
+	   			//var optvalue=$(c2).val(); //选择结果
+	   			var optvalue="";
+	   			var ctrl = $(c2);
+	   			ctrl.each(
+					function(index,d){
+						optvalue+=$(d).val();
+					}
+				);
+	   			//var answer = $(c1).text();//准确答案
+	   			if(optvalue!=null){
+		   			var answer=$(c1).attr("answer");
+					console.log(optvalue);
+					console.log(answer);
+		   			if(optvalue==answer)
+		   			{
+		   				score = parseFloat($(c1).attr("score"));
+		   				cnt2++;
+		   				totalScore+=score;
+		   				$(c3).attr("class","am-panel am-panel-success");
+		   				$(c4).attr("class","am-badge am-badge-success am-radius");
+		   				$(c4).text("√ 正确");
+		   			}else{
+		   				$(c3).attr("class","am-panel am-panel-danger");
+		   				$(c4).attr("class","am-badge am-badge-danger am-radius");
+		   				$(c4).text("× 错误");
+		   			}
+	   			}
+	   			var s = cnt2/cnt1*100;
+	   			var ss=s.toFixed(2);
+	   			$("#percent").text(ss+'%');
+	   			$("#totalScore").text(totalScore);
+	   			//alert(optvalue+":"+answer);
+   			})
+   		}
+
+   		   		//交卷
+    	function testFinished(){
+	   		var sp = $("span:hidden");
+	   		$.each(sp,function(i,obj){
+	   			$(obj).show();
+	   		})
+	   		var divs = $("div:hidden");
+	   		$.each(divs,function(i,obj){
+	   			$(obj).show();
+	   		})
+	   		statScore();
+	   		var testId = "6560";
+	   		console.log("msgLength2:"+cnt1);
+	   		console.log("msgLength3:"+cnt2);
+	   		var url="/artpc/courseAction!studyTestLog.action";
+         	$.post(
+				url,
+				{
+					"studyTest.sectionId":testId,
+					"studyTest.msgLength2":cnt1,
+					"studyTest.msgLength3":cnt2
+				},
+				function(data){
+					alert("交卷成功");
+				},
+				"json"
+			);
+
+   		}
+
+	</script>
+	<div data-am-sticky="">
+		<ul class="am-avg-sm-2 boxes">
+		  <li class="box box-1"><button class="am-btn am-btn-primary am-btn-block">客观题准确率：<font id="percent" color="red"></font></button></li>
+		  <li class="box box-2	"><button class="am-btn am-btn-primary am-btn-block">得分：<font id="totalScore" color="red"></font></button></li>
+		</ul>
+
+		<br>
+	 	<div style="text-align:center"><button type="button" name="btnAnswer" value="查看所有答案" class="am-btn am-btn-danger am-round" onclick="showAll();">查看所有答案</button></div>
+	</div>
+	<div class="am-g am-g-fixed am-margin-top">
+  		<div class="am-u-sm-12">
+		 	
+		 		<h1>Part I Dialogue Completion (15 points)(Directions: There are 15 short incomplete dialogues in this part, each followed by 4 choices marked A, B, C and D. Choose the one that best completes the dialogue and mark your answer on the ANSWER SHEET.)</h1>
+		 		
+					
+						<!-- <p style="white-space: pre-wrap;" id="183977">1.Speaker A： Waiter, _____
+Speaker B: Wait a minute, sir. That's $80 altogether.</p> -->
+						<pre><code id="183977">1.Speaker A： Waiter, _____
+Speaker B: Wait a minute, sir. That's $80 altogether.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183977" id="dx183977" value="A">A.Would you charge me ?	                      
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183977" id="dx183977" value="B">B.Menu, please?
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183977" id="dx183977" value="C">C.Would you take the money ?	
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183977" id="dx183977" value="D">D.May I have the bill, please?
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;183977&#39;);" class="am-btn am-btn-success">
+						<span id="d183977" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d183977d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d183977dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="183978">2. Speaker A: Do you mind if i keep pets in this building?
+Speaker B： _____</p> -->
+						<pre><code id="183978">2. Speaker A: Do you mind if i keep pets in this building?
+Speaker B： _____</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183978" id="dx183978" value="A">A.Who knows? 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183978" id="dx183978" value="B">B.I would rather you didn't
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183978" id="dx183978" value="C">C.Yeah, I love pets. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx183978" id="dx183978" value="D">D.No, you can't.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;183978&#39;);" class="am-btn am-btn-success">
+						<span id="d183978" style="display: none;" score="1" answer="B">
+							<div class="am-panel am-panel-success" id="d183978d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d183978dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184055">3.	Speaker A: This apple tastes nice. Could I have another one? Speaker B:</p> -->
+						<pre><code id="184055">3.	Speaker A: This apple tastes nice. Could I have another one? Speaker B:</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184055" id="dx184055" value="A">A. Mind your han
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184055" id="dx184055" value="B">B.Yes, you coul
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184055" id="dx184055" value="C">C.I'm sorry. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184055" id="dx184055" value="D">D.Be my friend
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184055&#39;);" class="am-btn am-btn-success">
+						<span id="d184055" style="display: none;" score="1" answer="B">
+							<div class="am-panel am-panel-success" id="d184055d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184055dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184056">4. Tom: Could I use your car for a day ?
+Jack: But you need to drive carefully.</p> -->
+						<pre><code id="184056">4. Tom: Could I use your car for a day ?
+Jack: But you need to drive carefully.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184056" id="dx184056" value="A">A.That's right. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184056" id="dx184056" value="B">B.Sure.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184056" id="dx184056" value="C">C.Never min
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184056" id="dx184056" value="D">D.I'm please
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184056&#39;);" class="am-btn am-btn-success">
+						<span id="d184056" style="display: none;" score="1" answer="B">
+							<div class="am-panel am-panel-success" id="d184056d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184056dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：汤姆：我能用你的车一天吗？
+杰克：但你得小心开车。
+根据语境可知选B当然</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184057">5. Doctor: 
+Patient: I'm much better My stomach problem is gone.</p> -->
+						<pre><code id="184057">5. Doctor: 
+Patient: I'm much better My stomach problem is gone.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184057" id="dx184057" value="A">A.Do you have anything to declare, sir?
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184057" id="dx184057" value="B">B.Good morning, may I help you?
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184057" id="dx184057" value="C">C.What seems to be the problem
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184057" id="dx184057" value="D">D.How are you feeling today?
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184057&#39;);" class="am-btn am-btn-success">
+						<span id="d184057" style="display: none;" score="1" answer="D">
+							<div class="am-panel am-panel-success" id="d184057d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184057dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184058">6.Amy: Mr. Gordon asked me to remind you of the meeting this afternoon. Don t youforget it!
+Lucy: OK, I </p> -->
+						<pre><code id="184058">6.Amy: Mr. Gordon asked me to remind you of the meeting this afternoon. Don t youforget it!
+Lucy: OK, I </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184058" id="dx184058" value="A">A.prefer to.                  
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184058" id="dx184058" value="B">B.won't
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184058" id="dx184058" value="C">C.suppose so. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184058" id="dx184058" value="D">D.do.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184058&#39;);" class="am-btn am-btn-success">
+						<span id="d184058" style="display: none;" score="1" answer="B">
+							<div class="am-panel am-panel-success" id="d184058d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184058dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184059">7. Mike: Madam, do all the buses go downtown?
+Susan: </p> -->
+						<pre><code id="184059">7. Mike: Madam, do all the buses go downtown?
+Susan: </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184059" id="dx184059" value="A">A.Wow, you got theide                                    
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184059" id="dx184059" value="B">B.No, never min
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184059" id="dx184059" value="C">C.Sorry, I'm new here. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184059" id="dx184059" value="D">D.Pretty well, I guess.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184059&#39;);" class="am-btn am-btn-success">
+						<span id="d184059" style="display: none;" score="1" answer="C">
+							<div class="am-panel am-panel-success" id="d184059d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184059dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184060">8. Jenny: Shall we go out for dinner tonight?
+Jackie: .</p> -->
+						<pre><code id="184060">8. Jenny: Shall we go out for dinner tonight?
+Jackie: .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184060" id="dx184060" value="A">A.You are right. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184060" id="dx184060" value="B">B. It must be funny.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184060" id="dx184060" value="C">C.Have a nice time. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184060" id="dx184060" value="D">D. That sounds great.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184060&#39;);" class="am-btn am-btn-success">
+						<span id="d184060" style="display: none;" score="1" answer="D">
+							<div class="am-panel am-panel-success" id="d184060d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184060dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184061">9. Speaker A: I sent a package to Dallas two days ago and it still hasn't arrived. My tracking number is 641-24.
+Speaker B: OK, Mr Smith. but our delivery person said that there was no
+such address.</p> -->
+						<pre><code id="184061">9. Speaker A: I sent a package to Dallas two days ago and it still hasn't arrived. My tracking number is 641-24.
+Speaker B: OK, Mr Smith. but our delivery person said that there was no
+such address.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184061" id="dx184061" value="A">A.Don't be angry                                                                           
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184061" id="dx184061" value="B">B.Stay calm,
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184061" id="dx184061" value="C">C. We attempted to deliver it, 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184061" id="dx184061" value="D">D. Thanks for asking me,
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184061&#39;);" class="am-btn am-btn-success">
+						<span id="d184061" style="display: none;" score="1" answer="C">
+							<div class="am-panel am-panel-success" id="d184061d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184061dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184062">10.Maggie: Hello, could I speak to Justin, please?
+Justin:  </p> -->
+						<pre><code id="184062">10.Maggie: Hello, could I speak to Justin, please?
+Justin:  </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184062" id="dx184062" value="A">A.Yes, please.    
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184062" id="dx184062" value="B">B. Yes, you can.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184062" id="dx184062" value="C">C. Who are you? 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184062" id="dx184062" value="D">D. Speaking.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184062&#39;);" class="am-btn am-btn-success">
+						<span id="d184062" style="display: none;" score="1" answer="A">
+							<div class="am-panel am-panel-success" id="d184062d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184062dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：麦琪：你好，我能和贾斯汀说话吗
+选项A符合语境</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184063">11. William: I'd like to invite you to dinner this Sunday, Mr. Smith.
+Smith: </p> -->
+						<pre><code id="184063">11. William: I'd like to invite you to dinner this Sunday, Mr. Smith.
+Smith: </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184063" id="dx184063" value="A">A.No, let’s not.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184063" id="dx184063" value="B">B.I'd rather stay at home.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184063" id="dx184063" value="C">C.No, that’ll be too much trouble.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184063" id="dx184063" value="D">D.I'd love to, but I have other plans.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184063&#39;);" class="am-btn am-btn-success">
+						<span id="d184063" style="display: none;" score="1" answer="D">
+							<div class="am-panel am-panel-success" id="d184063d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184063dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184064">12. Mavis: How is everything, Ruth?
+Ruth: </p> -->
+						<pre><code id="184064">12. Mavis: How is everything, Ruth?
+Ruth: </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184064" id="dx184064" value="A">A.Not too bad. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184064" id="dx184064" value="B">B.Well, thank you.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184064" id="dx184064" value="C">C.It's all right, thanks. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184064" id="dx184064" value="D">D.Not at all.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184064&#39;);" class="am-btn am-btn-success">
+						<span id="d184064" style="display: none;" score="1" answer="C">
+							<div class="am-panel am-panel-success" id="d184064d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184064dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184065">13. Mori: I'm pleased to meet you here.
+Kaco: </p> -->
+						<pre><code id="184065">13. Mori: I'm pleased to meet you here.
+Kaco: </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184065" id="dx184065" value="A">A. I didn't expect to see you here. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184065" id="dx184065" value="B">B. You're too hospitable.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184065" id="dx184065" value="C">C. Thank you so much. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184065" id="dx184065" value="D">D. Pleased to meet you, too.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184065&#39;);" class="am-btn am-btn-success">
+						<span id="d184065" style="display: none;" score="1" answer="D">
+							<div class="am-panel am-panel-success" id="d184065d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184065dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184066">14. Joe: Thank you for everything you've done for me during my stay here.
+Henry: You're welcome. </p> -->
+						<pre><code id="184066">14. Joe: Thank you for everything you've done for me during my stay here.
+Henry: You're welcome. </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184066" id="dx184066" value="A">A.It doesn't matter. 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184066" id="dx184066" value="B">B.It's my job
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184066" id="dx184066" value="C">C.Yes, I'd love to.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184066" id="dx184066" value="D">D.Be careful.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184066&#39;);" class="am-btn am-btn-success">
+						<span id="d184066" style="display: none;" score="1" answer="C">
+							<div class="am-panel am-panel-success" id="d184066d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184066dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：Joe: 谢谢你在我逗留期间为我所做的一切。亨利：不客气。
+选项A：没关系，选项B：这是我的工作，选项C是的，我很乐意，选项D小心。根据语境选C</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184067">15. Donna： Can you tell me where the library is?
+Harry: Of course, it's behind the teaching building.
+Donna: Thanks.
+Harry: </p> -->
+						<pre><code id="184067">15. Donna： Can you tell me where the library is?
+Harry: Of course, it's behind the teaching building.
+Donna: Thanks.
+Harry: </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184067" id="dx184067" value="A">A. Don't be so sure. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184067" id="dx184067" value="B">B. I'm happy to have done it.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184067" id="dx184067" value="C">C. You are welcome. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184067" id="dx184067" value="D">D. I'm glad you like it.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184067&#39;);" class="am-btn am-btn-success">
+						<span id="d184067" style="display: none;" score="1" answer="C">
+							<div class="am-panel am-panel-success" id="d184067d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184067dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+		 		
+		 		
+		 		
+			
+		 		<h1>Part II Reading Comprehension (40 points)(Directions: There are 4 passages in this part. Each passage is follov；ed by 5 questions or unfinished statements. For each of them there are 4 choices marked A, B, C and D. Choose the best one and mark your answer on the ANSWER SHEET.)</h1>
+		 		
+					
+						<!-- <p style="white-space: pre-wrap;" id="184068">Kids often ask Scout Bassett, of Palm Desert, California, if she wishes she had two normal legs. Scout, 18, answers, 4tNo. I have never known anything different, and it would seem weird to me. Besides, if it weren't for the missing leg, I wouldn't have the opportunities I have today!”
+  Scout has faced big challenges, When she was only months old, she suffered from terrible bums. Her right leg was especially damaged, and doctors cut it off above the knee. When she was 14, she got a high-tech leg made for sports and put it to the test right av/ay in a race for disabled athletes. "I remember being terrified because this was my first time," she says. "But my doctor said, "You have to start somewhere.'"
+  Scout was waiting nervously for the race to start when athlete Sarah Reinertsen came up and said, "I've been doing this for a while. Let me give you some tips." Reinertsen, who lost her leg when she was seven, is the first disabled woman to have finished the Ironman Triathlon (铁人三项)in Hawaii. She works with an organization to
+help support people like Scout.
+  Reinertsen's encouragement changed the teenager's life. She lost that race, but gained the confidence that she needed to compete If Sarah could do it, she could too. Training hard, she now runs competitively and also find . time to share her story with school groups.
+  "Sometimes people look at me or a! Sarah and think they have nothing in common with us. I tell them that even if you aren't physically challenged, everybody has challenges of some kind—maybe with family, or homework, or friends. No matter what it is, you can overcome that obstacle," she says. “Everything you need is inside your heart. Take small steps. As time goes by, the steps will get bigger and you will reach your dream."16. Why does Scout answer "us"when asked if she wants two normal legs?</p> -->
+						<pre><code id="184068">Kids often ask Scout Bassett, of Palm Desert, California, if she wishes she had two normal legs. Scout, 18, answers, 4tNo. I have never known anything different, and it would seem weird to me. Besides, if it weren't for the missing leg, I wouldn't have the opportunities I have today!”
+  Scout has faced big challenges, When she was only months old, she suffered from terrible bums. Her right leg was especially damaged, and doctors cut it off above the knee. When she was 14, she got a high-tech leg made for sports and put it to the test right av/ay in a race for disabled athletes. "I remember being terrified because this was my first time," she says. "But my doctor said, "You have to start somewhere.'"
+  Scout was waiting nervously for the race to start when athlete Sarah Reinertsen came up and said, "I've been doing this for a while. Let me give you some tips." Reinertsen, who lost her leg when she was seven, is the first disabled woman to have finished the Ironman Triathlon (铁人三项)in Hawaii. She works with an organization to
+help support people like Scout.
+  Reinertsen's encouragement changed the teenager's life. She lost that race, but gained the confidence that she needed to compete If Sarah could do it, she could too. Training hard, she now runs competitively and also find . time to share her story with school groups.
+  "Sometimes people look at me or a! Sarah and think they have nothing in common with us. I tell them that even if you aren't physically challenged, everybody has challenges of some kind—maybe with family, or homework, or friends. No matter what it is, you can overcome that obstacle," she says. “Everything you need is inside your heart. Take small steps. As time goes by, the steps will get bigger and you will reach your dream."16. Why does Scout answer "us"when asked if she wants two normal legs?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184068" id="dx184068" value="A">A.She's scored of changing her current situation.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184068" id="dx184068" value="B">B.She couldn't have them even if she wanted to.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184068" id="dx184068" value="C">C.She has never thought about it before.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184068" id="dx184068" value="D">D.She's satisfied with what she has achieved as a disable
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184068&#39;);" class="am-btn am-btn-success">
+						<span id="d184068" style="display: none;" score="2" answer="D">
+							<div class="am-panel am-panel-success" id="d184068d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184068dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184069">17. What does the doctor mean by saying "You have to start somewhere " (Para. 2)?</p> -->
+						<pre><code id="184069">17. What does the doctor mean by saying "You have to start somewhere " (Para. 2)?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184069" id="dx184069" value="A">A.She has to do it sooner or later.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184069" id="dx184069" value="B">B.She has to find the right place to start.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184069" id="dx184069" value="C">C.That will be a memorable first time.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184069" id="dx184069" value="D">D. That is a perfect time to start.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184069&#39;);" class="am-btn am-btn-success">
+						<span id="d184069" style="display: none;" score="2" answer="B">
+							<div class="am-panel am-panel-success" id="d184069d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184069dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184070">18. Scout’s childhood experiences  .</p> -->
+						<pre><code id="184070">18. Scout’s childhood experiences  .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184070" id="dx184070" value="A">A.were the cause of her shyness
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184070" id="dx184070" value="B">B.were a nightmare until she reached 14
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184070" id="dx184070" value="C">C.didn't stop her from fulfilling herself
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184070" id="dx184070" value="D">D.didn’t have much influence on her later life
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184070&#39;);" class="am-btn am-btn-success">
+						<span id="d184070" style="display: none;" score="2" answer="C">
+							<div class="am-panel am-panel-success" id="d184070d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184070dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184071">19. Which of the following statements is true?</p> -->
+						<pre><code id="184071">19. Which of the following statements is true?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184071" id="dx184071" value="A">A.Sarah shared her story with school students.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184071" id="dx184071" value="B">B.Sarah started to compete at the age of seven.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184071" id="dx184071" value="C">C.Scout has been inspired by Sarah s success.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184071" id="dx184071" value="D">D.Scout joined Sarah's organization to help others.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184071&#39;);" class="am-btn am-btn-success">
+						<span id="d184071" style="display: none;" score="2" answer="A">
+							<div class="am-panel am-panel-success" id="d184071d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184071dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184072">20. Through Scout's story, the author wants to tell us that </p> -->
+						<pre><code id="184072">20. Through Scout's story, the author wants to tell us that </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184072" id="dx184072" value="A">A.the disabled are mentally stronger than others
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184072" id="dx184072" value="B">B. inner strength can help one overcome difficulties
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184072" id="dx184072" value="C">C.good things will come no matter what
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184072" id="dx184072" value="D">D.everybody has to challenge himself
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184072&#39;);" class="am-btn am-btn-success">
+						<span id="d184072" style="display: none;" score="2" answer="B">
+							<div class="am-panel am-panel-success" id="d184072d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184072dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184073"> Impatience has been around for a long time. There is nothing new about people losing their patience while stuck in traffic or waiting in line. But some experts believe that people are less patient today than in the past.
+  Some analysts suggest that in recent years many people are less patient because of technology. They suggest that "digital technology, from cellphones to emails to iPads, is changing our lives. The instant results we get from this technology have in turn increased our desire for instant satisfaction in other aspects of our lives.”
+  Psychologist Jennifer Hartstein makes some observations. She explains that "we have become an immediate satisfaction culture, and v/e expect things to move quickly, efficiently and in the way we want. When that doesn't happen, we tend to become increasingly frustrated and unsatisfied."
+  Some believe that e-mail is losing popularity and could soon become outdated. Why? Because many people who send messages do not have the patience to wait hours, or even minutes, for a response. Also, with e-mails, as with letter writing, introductory
+and concluding greetings are often expected. But many people consider such formalities (客套)to be boring and time-consuming. They prefer instant messaging. Many people do not take the time to proofread what they put in writing. As a result, letters and e-mails contain numerous grammatical and spelling errors.
+  The thirst for immediate results is not limited to the digital communications. People seem to be losing their ability to wait in other areas of life. For instance, do you ever find yourself talking too fast, eating too fast, driving too fast, or spending money too fast? The few moments it takes to wait for an elevator to come, for a traffic light to change, or for a computer to start may seem like too long a time.
+21. According to the first paragraph, people .</p> -->
+						<pre><code id="184073"> Impatience has been around for a long time. There is nothing new about people losing their patience while stuck in traffic or waiting in line. But some experts believe that people are less patient today than in the past.
+  Some analysts suggest that in recent years many people are less patient because of technology. They suggest that "digital technology, from cellphones to emails to iPads, is changing our lives. The instant results we get from this technology have in turn increased our desire for instant satisfaction in other aspects of our lives.”
+  Psychologist Jennifer Hartstein makes some observations. She explains that "we have become an immediate satisfaction culture, and v/e expect things to move quickly, efficiently and in the way we want. When that doesn't happen, we tend to become increasingly frustrated and unsatisfied."
+  Some believe that e-mail is losing popularity and could soon become outdated. Why? Because many people who send messages do not have the patience to wait hours, or even minutes, for a response. Also, with e-mails, as with letter writing, introductory
+and concluding greetings are often expected. But many people consider such formalities (客套)to be boring and time-consuming. They prefer instant messaging. Many people do not take the time to proofread what they put in writing. As a result, letters and e-mails contain numerous grammatical and spelling errors.
+  The thirst for immediate results is not limited to the digital communications. People seem to be losing their ability to wait in other areas of life. For instance, do you ever find yourself talking too fast, eating too fast, driving too fast, or spending money too fast? The few moments it takes to wait for an elevator to come, for a traffic light to change, or for a computer to start may seem like too long a time.
+21. According to the first paragraph, people .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184073" id="dx184073" value="A">A.were more patient in the past
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184073" id="dx184073" value="B">B.have been patient for a long time
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184073" id="dx184073" value="C">C.used to be patient while stuck in traffic
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184073" id="dx184073" value="D">D.used to be patient while waiting tn line
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184073&#39;);" class="am-btn am-btn-success">
+						<span id="d184073" style="display: none;" score="2" answer="A">
+							<div class="am-panel am-panel-success" id="d184073d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184073dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184074">22. Nowadays people lose their patience because .</p> -->
+						<pre><code id="184074">22. Nowadays people lose their patience because .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184074" id="dx184074" value="A">A.their desire for satisfaction has increased
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184074" id="dx184074" value="B">B.they are bored with what they have
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184074" id="dx184074" value="C">C.they have more things to do than before
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184074" id="dx184074" value="D">D.their life has been changed by technology
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184074&#39;);" class="am-btn am-btn-success">
+						<span id="d184074" style="display: none;" score="2" answer="A">
+							<div class="am-panel am-panel-success" id="d184074d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184074dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184075">23. Some believe that e-mail could soon become outdated because .</p> -->
+						<pre><code id="184075">23. Some believe that e-mail could soon become outdated because .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184075" id="dx184075" value="A">A.it takes a long time to start the computer
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184075" id="dx184075" value="B">B.people value formalities between friends 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184075" id="dx184075" value="C">C.people can hardly wait for a response 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184075" id="dx184075" value="D">D. cellphones are more popular nowadays
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184075&#39;);" class="am-btn am-btn-success">
+						<span id="d184075" style="display: none;" score="2" answer="C">
+							<div class="am-panel am-panel-success" id="d184075d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184075dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184076">24. The pursuit of instant results causes people to .</p> -->
+						<pre><code id="184076">24. The pursuit of instant results causes people to .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184076" id="dx184076" value="A">A.become more impolite
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184076" id="dx184076" value="B">B.have more errors in their writings
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184076" id="dx184076" value="C">C.use voice messages instead of emails
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184076" id="dx184076" value="D">D.lose many of their abilities in life
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184076&#39;);" class="am-btn am-btn-success">
+						<span id="d184076" style="display: none;" score="2" answer="B">
+							<div class="am-panel am-panel-success" id="d184076d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184076dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184077">25. The best title for the passage might be " "</p> -->
+						<pre><code id="184077">25. The best title for the passage might be " "</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184077" id="dx184077" value="A">A.What Are the Problems Caused by Impatience?
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184077" id="dx184077" value="B">B.Are We Less Patient Today?
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184077" id="dx184077" value="C">C.What Happened to Technology?
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184077" id="dx184077" value="D">D.Has Digital Technology Changed Our Lives?
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184077&#39;);" class="am-btn am-btn-success">
+						<span id="d184077" style="display: none;" score="2" answer="B">
+							<div class="am-panel am-panel-success" id="d184077d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184077dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184078">Scientists measured the impact that people have on the environment using a term called carbon "footprint." That footprint reflects the amount of carbon dioxide that is emitted(排放)into the atmosphere as a result of someone's daily activities .  Carbon to be low for city dwellers ( 城镇居民) . Living in a suburb outside a city,however, can turn that footprint into a bootprint.
+  Energy researchers Christopher Jones and Daniel Kammen calculated carbon footprints for people in every zip code across the United States. People living in city centers had small footprint, the researchers found. "It is much easier to have a low carbon impact if your home is close to where you work, shop and play, explains Jones. Living within walking or biking distance cuts back on the amount of carbon dioxide associated with moving people by cars. And cities with extensive bus and subway networks allow people to travel great distances while keeping releases of climate-altering greenhouse gases low.
+  Not everyone can afford to live in the city, however. And not everyone wants to. Rings of suburbs have popped up around major cities across the world. Suburbs offer more space, allowing people to build larger homes. Suburbs may offer better schools for a family's kids. But those homes are typically well beyond walking distance from where their owners work, play or learn. So people who live in suburbs often drive lone distances.
+  The new findings are an important contribution to climate research says Matthew Kahn, an environmental economist at the University of California who was not involved with the study. Kahn would like to see the analysis applied to other parts of the world—Europe, India and China, for instance. That would give scientists a better feel for how culture might mix with location to influence our carbon footprint.
+26. "Footprint " refers to the amount of carbon dioxide released by</p> -->
+						<pre><code id="184078">Scientists measured the impact that people have on the environment using a term called carbon "footprint." That footprint reflects the amount of carbon dioxide that is emitted(排放)into the atmosphere as a result of someone's daily activities .  Carbon to be low for city dwellers ( 城镇居民) . Living in a suburb outside a city,however, can turn that footprint into a bootprint.
+  Energy researchers Christopher Jones and Daniel Kammen calculated carbon footprints for people in every zip code across the United States. People living in city centers had small footprint, the researchers found. "It is much easier to have a low carbon impact if your home is close to where you work, shop and play, explains Jones. Living within walking or biking distance cuts back on the amount of carbon dioxide associated with moving people by cars. And cities with extensive bus and subway networks allow people to travel great distances while keeping releases of climate-altering greenhouse gases low.
+  Not everyone can afford to live in the city, however. And not everyone wants to. Rings of suburbs have popped up around major cities across the world. Suburbs offer more space, allowing people to build larger homes. Suburbs may offer better schools for a family's kids. But those homes are typically well beyond walking distance from where their owners work, play or learn. So people who live in suburbs often drive lone distances.
+  The new findings are an important contribution to climate research says Matthew Kahn, an environmental economist at the University of California who was not involved with the study. Kahn would like to see the analysis applied to other parts of the world—Europe, India and China, for instance. That would give scientists a better feel for how culture might mix with location to influence our carbon footprint.
+26. "Footprint " refers to the amount of carbon dioxide released by</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184078" id="dx184078" value="A">A. an industry 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184078" id="dx184078" value="B">B. an individual
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184078" id="dx184078" value="C">C.a region 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184078" id="dx184078" value="D">D. a country
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184078&#39;);" class="am-btn am-btn-success">
+						<span id="d184078" style="display: none;" score="2" answer="B">
+							<div class="am-panel am-panel-success" id="d184078d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184078dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184079">27. What is the new finding concerning the footprints of people living in cities and those living in suburbs?</p> -->
+						<pre><code id="184079">27. What is the new finding concerning the footprints of people living in cities and those living in suburbs?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184079" id="dx184079" value="A">A.The two are not at all comparable.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184079" id="dx184079" value="B">B.The former are higher than the latter.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184079" id="dx184079" value="C">C.The latter are higher than the former.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184079" id="dx184079" value="D">D.The former are similar to the latter.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184079&#39;);" class="am-btn am-btn-success">
+						<span id="d184079" style="display: none;" score="2" answer="C">
+							<div class="am-panel am-panel-success" id="d184079d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184079dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184080">28. What is the key factor mentioned to explain the new findings?</p> -->
+						<pre><code id="184080">28. What is the key factor mentioned to explain the new findings?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184080" id="dx184080" value="A">A. Distance travelled by cars. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184080" id="dx184080" value="B">B. Spending habits.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184080" id="dx184080" value="C">C. Size of families. 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184080" id="dx184080" value="D">D. Attitude towards energy saving.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184080&#39;);" class="am-btn am-btn-success">
+						<span id="d184080" style="display: none;" score="2" answer="A">
+							<div class="am-panel am-panel-success" id="d184080d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184080dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184081">29. What docs Matthew Kahn think of the new findings?</p> -->
+						<pre><code id="184081">29. What docs Matthew Kahn think of the new findings?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184081" id="dx184081" value="A">A.He is confused by the mixed messages.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184081" id="dx184081" value="B">B.He thinks highly of them.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184081" id="dx184081" value="C">C.He can easily understand them.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184081" id="dx184081" value="D">D.He doubts their validity.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184081&#39;);" class="am-btn am-btn-success">
+						<span id="d184081" style="display: none;" score="2" answer="B">
+							<div class="am-panel am-panel-success" id="d184081d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184081dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184082">30. What is the purpose of the author in writing the passage?</p> -->
+						<pre><code id="184082">30. What is the purpose of the author in writing the passage?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184082" id="dx184082" value="A">A.To call on people to reduce carbon footprints.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184082" id="dx184082" value="B">B.To offer tips on how to live a low-carbon life.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184082" id="dx184082" value="C">C.To clear up misunderstandings about carbon emission.
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184082" id="dx184082" value="D">D.To introduce the research on carbon footprints.
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184082&#39;);" class="am-btn am-btn-success">
+						<span id="d184082" style="display: none;" score="2" answer="D">
+							<div class="am-panel am-panel-success" id="d184082d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184082dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184083"> It was a chilly November evening in New York City, and my daughter and I were walking up Broadway. Nora noticed a guy sitting inside a cardboard box next to a newsstand. She pulled at my coat sleeve and said, "That man's cold, Daddy. Can we lake him home?"
+  I don't remember my reply, but I do remember a sudden heavy feeling inside me. I had always been delighted at how much my daughter noticed in her world, whether it was birds in flight or children playing. But now she was noticing suffering and poverty. She wasn't even four.
+  A few days later, I saw an article in the newspaper about volunteers who delivered meals to elderly people. The volunteers went to a nearby school on a Sunday morning,
+picked up a food package, and delivered it to an elderly person. I signed us up. Nora was excited about it. She could understand the importance of food. so she could easily see how valuable our job was. When Sunday came, we picked up the package and phoned the elderly person we'd been assigned. She invited us right over.
+  The building was depressing. When the door opened, facing us was a silver-haired woman in an old dress. She took the package and asked if we would like to come in. Nora ran inside. I reluctantly followed. Our hostess showed us some photos of her family. Kora played and laughed. I accepted a second cup of tea. When it came time to say good-bye, we three stood in the doorway and hugged. I talked home in tears.
+  Where else but as volunteers do you have the opportunity to do something enjoyable that’s good for yourself as well as for others? Indeed, the poverty my daughter and I helped lessen that Sunday afternoon was not the woman's alone一it was in our lives, too. Now Nora and I regularly serve meals to needy people and collect clothes for the homeless. Yet, as I've watched her grow over these past four years, I still wonder—which of us has benefited more?
+31. The man Nora noticed on that evening was probably </p> -->
+						<pre><code id="184083"> It was a chilly November evening in New York City, and my daughter and I were walking up Broadway. Nora noticed a guy sitting inside a cardboard box next to a newsstand. She pulled at my coat sleeve and said, "That man's cold, Daddy. Can we lake him home?"
+  I don't remember my reply, but I do remember a sudden heavy feeling inside me. I had always been delighted at how much my daughter noticed in her world, whether it was birds in flight or children playing. But now she was noticing suffering and poverty. She wasn't even four.
+  A few days later, I saw an article in the newspaper about volunteers who delivered meals to elderly people. The volunteers went to a nearby school on a Sunday morning,
+picked up a food package, and delivered it to an elderly person. I signed us up. Nora was excited about it. She could understand the importance of food. so she could easily see how valuable our job was. When Sunday came, we picked up the package and phoned the elderly person we'd been assigned. She invited us right over.
+  The building was depressing. When the door opened, facing us was a silver-haired woman in an old dress. She took the package and asked if we would like to come in. Nora ran inside. I reluctantly followed. Our hostess showed us some photos of her family. Kora played and laughed. I accepted a second cup of tea. When it came time to say good-bye, we three stood in the doorway and hugged. I talked home in tears.
+  Where else but as volunteers do you have the opportunity to do something enjoyable that’s good for yourself as well as for others? Indeed, the poverty my daughter and I helped lessen that Sunday afternoon was not the woman's alone一it was in our lives, too. Now Nora and I regularly serve meals to needy people and collect clothes for the homeless. Yet, as I've watched her grow over these past four years, I still wonder—which of us has benefited more?
+31. The man Nora noticed on that evening was probably </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184083" id="dx184083" value="A">A.asking for food
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184083" id="dx184083" value="B">B.one of those homeless
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184083" id="dx184083" value="C">C.taken home by the author
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184083" id="dx184083" value="D">D.buying a newspaper
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184083&#39;);" class="am-btn am-btn-success">
+						<span id="d184083" style="display: none;" score="2" answer="B">
+							<div class="am-panel am-panel-success" id="d184083d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184083dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184084">32. The author had a sudden heavy feeling (Para. 2), because </p> -->
+						<pre><code id="184084">32. The author had a sudden heavy feeling (Para. 2), because </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184084" id="dx184084" value="A">A.his daughter had noticed the dark side of life
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184084" id="dx184084" value="B">B.he did not want to take the guy home
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184084" id="dx184084" value="C">C.he felt a deep sympathy for the guy
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184084" id="dx184084" value="D">D.his daughter was afraid of what she saw
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184084&#39;);" class="am-btn am-btn-success">
+						<span id="d184084" style="display: none;" score="2" answer="A">
+							<div class="am-panel am-panel-success" id="d184084d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184084dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184085">33. Their volunteer job was to .</p> -->
+						<pre><code id="184085">33. Their volunteer job was to .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184085" id="dx184085" value="A">A.visit poor homes
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184085" id="dx184085" value="B">B.serve meals at a nearby school
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184085" id="dx184085" value="C">C.pick up packages for poor, elderly people
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184085" id="dx184085" value="D">D.deliver food to needy, elderly people
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184085&#39;);" class="am-btn am-btn-success">
+						<span id="d184085" style="display: none;" score="2" answer="C">
+							<div class="am-panel am-panel-success" id="d184085d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184085dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184086">34. The word "us" in the last paragraph refers to .</p> -->
+						<pre><code id="184086">34. The word "us" in the last paragraph refers to .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184086" id="dx184086" value="A">A.the author and the old woman
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184086" id="dx184086" value="B">B.the giver and receiver of the help
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184086" id="dx184086" value="C">C.the author and his daughter
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184086" id="dx184086" value="D">D.the author and the guy in the box
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184086&#39;);" class="am-btn am-btn-success">
+						<span id="d184086" style="display: none;" score="2" answer="C">
+							<div class="am-panel am-panel-success" id="d184086d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184086dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184087">35. The best title for this passage might be " ".</p> -->
+						<pre><code id="184087">35. The best title for this passage might be " ".</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184087" id="dx184087" value="A">A. A Loving Kid 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184087" id="dx184087" value="B">B. Volunteers at Work
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184087" id="dx184087" value="C">C. A Lesson in Caring 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184087" id="dx184087" value="D">D. How to Help the Needy
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184087&#39;);" class="am-btn am-btn-success">
+						<span id="d184087" style="display: none;" score="2" answer="C">
+							<div class="am-panel am-panel-success" id="d184087d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184087dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+		 		
+		 		
+		 		
+			
+		 		<h1>Part III Vocabulary and Structure (20 points)(Directions: There are 40 incomplete sentences in this part For each sentence there arc 4 choices marked A, B, C and D. Choose the one that best completes the sentence. Mark your answer on he ANSWER SHEET.)</h1>
+		 		
+					
+						<!-- <p style="white-space: pre-wrap;" id="184088">36. As the train will not leave until one hour later, we grab a bite at the snack bar.</p> -->
+						<pre><code id="184088">36. As the train will not leave until one hour later, we grab a bite at the snack bar.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184088" id="dx184088" value="A">A. may well 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184088" id="dx184088" value="B">B. just as well
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184088" id="dx184088" value="C">C.might as well 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184088" id="dx184088" value="D">D. as well
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184088&#39;);" class="am-btn am-btn-success">
+						<span id="d184088" style="display: none;" score="0" answer="C">
+							<div class="am-panel am-panel-success" id="d184088d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184088dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184089">37. During the last three decades, the number of people participating in physical fitness programs________sharply.</p> -->
+						<pre><code id="184089">37. During the last three decades, the number of people participating in physical fitness programs________sharply.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184089" id="dx184089" value="A">A. were increasing 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184089" id="dx184089" value="B">B. has increased
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184089" id="dx184089" value="C">C.had increased 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184089" id="dx184089" value="D">D. have increased
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184089&#39;);" class="am-btn am-btn-success">
+						<span id="d184089" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184089d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184089dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184090">38.______for the timely investment from the general public, our company would not be so thriving as it is.</p> -->
+						<pre><code id="184090">38.______for the timely investment from the general public, our company would not be so thriving as it is.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184090" id="dx184090" value="A">A.Were it not 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184090" id="dx184090" value="B">B.Be it not
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184090" id="dx184090" value="C">C. Should it not be
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184090" id="dx184090" value="D">D.Had it not been
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184090&#39;);" class="am-btn am-btn-success">
+						<span id="d184090" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184090d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184090dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184091">39  Did you scold him tor his carelessness?
+一 Yes, but___________it.</p> -->
+						<pre><code id="184091">39  Did you scold him tor his carelessness?
+一 Yes, but___________it.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184091" id="dx184091" value="A">A. I'd rather not have done 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184091" id="dx184091" value="B">B. I’d rather do
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184091" id="dx184091" value="C">C.I should do                                             
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184091" id="dx184091" value="D">D. I'd better not do
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184091&#39;);" class="am-btn am-btn-success">
+						<span id="d184091" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184091d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184091dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184092">40. Not until a monkey is several years old to exhibit signs of independence from its mother.</p> -->
+						<pre><code id="184092">40. Not until a monkey is several years old to exhibit signs of independence from its mother.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184092" id="dx184092" value="A">A. it does begin 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184092" id="dx184092" value="B">B. when it begins
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184092" id="dx184092" value="C">C. before it begins 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184092" id="dx184092" value="D">D. does it begin
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184092&#39;);" class="am-btn am-btn-success">
+						<span id="d184092" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184092d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184092dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184093">41. Scientists now have some surprising answers about whether brain power _as we get older.</p> -->
+						<pre><code id="184093">41. Scientists now have some surprising answers about whether brain power _as we get older.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184093" id="dx184093" value="A">A. reduces 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184093" id="dx184093" value="B">B. descends
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184093" id="dx184093" value="C">C. declines 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184093" id="dx184093" value="D">D. collapses
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184093&#39;);" class="am-btn am-btn-success">
+						<span id="d184093" style="display: none;" score="0" answer="C">
+							<div class="am-panel am-panel-success" id="d184093d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184093dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184094">42. These books arc designed to _______children.</p> -->
+						<pre><code id="184094">42. These books arc designed to _______children.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184094" id="dx184094" value="A">A. agree with                                                                                   
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184094" id="dx184094" value="B">B.apply for
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184094" id="dx184094" value="C">C. appeal to 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184094" id="dx184094" value="D">D. address to
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184094&#39;);" class="am-btn am-btn-success">
+						<span id="d184094" style="display: none;" score="0" answer="C">
+							<div class="am-panel am-panel-success" id="d184094d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184094dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184095">43. The school isn’t the one I really wanted to go, but I suppose I'll just have to________it.</p> -->
+						<pre><code id="184095">43. The school isn’t the one I really wanted to go, but I suppose I'll just have to________it.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184095" id="dx184095" value="A">A. get away from 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184095" id="dx184095" value="B">B. make the best of
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184095" id="dx184095" value="C">C. keep an eye on 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184095" id="dx184095" value="D">D. catch up with
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184095&#39;);" class="am-btn am-btn-success">
+						<span id="d184095" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184095d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184095dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184096">44. Constant showers are characteristic the summer here.</p> -->
+						<pre><code id="184096">44. Constant showers are characteristic the summer here.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184096" id="dx184096" value="A">A. for 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184096" id="dx184096" value="B">B. to
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184096" id="dx184096" value="C">C. with 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184096" id="dx184096" value="D">D. of
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184096&#39;);" class="am-btn am-btn-success">
+						<span id="d184096" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184096d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184096dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184097">45. We must find a way to cut prices （）reducing our profits too much.</p> -->
+						<pre><code id="184097">45. We must find a way to cut prices （）reducing our profits too much.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184097" id="dx184097" value="A">A. despite 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184097" id="dx184097" value="B">B. without
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184097" id="dx184097" value="C">C. with 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184097" id="dx184097" value="D">D. for
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184097&#39;);" class="am-btn am-btn-success">
+						<span id="d184097" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184097d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184097dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184098">46. This special school accepts all disabled students, _educational level and background.</p> -->
+						<pre><code id="184098">46. This special school accepts all disabled students, _educational level and background.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184098" id="dx184098" value="A">A. regardless of 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184098" id="dx184098" value="B">B. according to
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184098" id="dx184098" value="C">C. in addition to 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184098" id="dx184098" value="D">D. in terms of
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184098&#39;);" class="am-btn am-btn-success">
+						<span id="d184098" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184098d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184098dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184099">47. Membership in the United Nations is open to all peace-loving slates which accept the__________ of the Charter </p> -->
+						<pre><code id="184099">47. Membership in the United Nations is open to all peace-loving slates which accept the__________ of the Charter </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184099" id="dx184099" value="A">A. obligations 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184099" id="dx184099" value="B">B. debts
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184099" id="dx184099" value="C">C. credit 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184099" id="dx184099" value="D">D. rights
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184099&#39;);" class="am-btn am-btn-success">
+						<span id="d184099" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184099d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184099dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184100">48. They are building the dam in with another firm.</p> -->
+						<pre><code id="184100">48. They are building the dam in with another firm.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184100" id="dx184100" value="A">A. association 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184100" id="dx184100" value="B">B. comparison
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184100" id="dx184100" value="C">C. touch 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184100" id="dx184100" value="D">D. tune
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184100&#39;);" class="am-btn am-btn-success">
+						<span id="d184100" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184100d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184100dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184101">49. The shy girl felt quite and uncomfortable when she could not answer the interviewer s question.</p> -->
+						<pre><code id="184101">49. The shy girl felt quite and uncomfortable when she could not answer the interviewer s question.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184101" id="dx184101" value="A">A. amused 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184101" id="dx184101" value="B">B. sensitive
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184101" id="dx184101" value="C">C. awkward 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184101" id="dx184101" value="D">D. curious
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184101&#39;);" class="am-btn am-btn-success">
+						<span id="d184101" style="display: none;" score="0" answer="C">
+							<div class="am-panel am-panel-success" id="d184101d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184101dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184102">50. The two parties haven't reached any agreement, but decided to set another date for_talks.</p> -->
+						<pre><code id="184102">50. The two parties haven't reached any agreement, but decided to set another date for_talks.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184102" id="dx184102" value="A">A. deeper 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184102" id="dx184102" value="B">B. slower
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184102" id="dx184102" value="C">C. longer 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184102" id="dx184102" value="D">D. further
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184102&#39;);" class="am-btn am-btn-success">
+						<span id="d184102" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184102d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184102dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184103">51. The hotel was reasonably comfortable but the food lacked_and the service was poor.</p> -->
+						<pre><code id="184103">51. The hotel was reasonably comfortable but the food lacked_and the service was poor.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184103" id="dx184103" value="A">A.energy 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184103" id="dx184103" value="B">B.standard
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184103" id="dx184103" value="C">C.heat 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184103" id="dx184103" value="D">D.variety
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184103&#39;);" class="am-btn am-btn-success">
+						<span id="d184103" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184103d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184103dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184104">52. Bom into a family with three brothers, David was _ to value the sense of sharing.</p> -->
+						<pre><code id="184104">52. Bom into a family with three brothers, David was _ to value the sense of sharing.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184104" id="dx184104" value="A">A. turned down 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184104" id="dx184104" value="B">B. brought up
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184104" id="dx184104" value="C">C.looked after               
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184104" id="dx184104" value="D">D.held back
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184104&#39;);" class="am-btn am-btn-success">
+						<span id="d184104" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184104d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184104dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184105">53. A lorry Jane's cat and sped away.</p> -->
+						<pre><code id="184105">53. A lorry Jane's cat and sped away.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184105" id="dx184105" value="A">A.ran into                                        
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184105" id="dx184105" value="B">B. ran over
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184105" id="dx184105" value="C">C.ran through                                         
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184105" id="dx184105" value="D">D. ran down
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184105&#39;);" class="am-btn am-btn-success">
+						<span id="d184105" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184105d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184105dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184106">54 There was such a long queue outside the China Pavilion that we_gave up.</p> -->
+						<pre><code id="184106">54 There was such a long queue outside the China Pavilion that we_gave up.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184106" id="dx184106" value="A">A. unfortunately 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184106" id="dx184106" value="B">B. purposefully
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184106" id="dx184106" value="C">C.initially                                           
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184106" id="dx184106" value="D">D. eventually
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184106&#39;);" class="am-btn am-btn-success">
+						<span id="d184106" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184106d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184106dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184107">55 Visitors from the US have increased 8 percent since last year.</p> -->
+						<pre><code id="184107">55 Visitors from the US have increased 8 percent since last year.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184107" id="dx184107" value="A">A. by 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184107" id="dx184107" value="B">B. in
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184107" id="dx184107" value="C">C. with 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184107" id="dx184107" value="D">D. from
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184107&#39;);" class="am-btn am-btn-success">
+						<span id="d184107" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184107d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184107dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184108">56. I gave John a present but he gave me nothing .</p> -->
+						<pre><code id="184108">56. I gave John a present but he gave me nothing .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184108" id="dx184108" value="A">A. in turn 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184108" id="dx184108" value="B">B. in return
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184108" id="dx184108" value="C">C. in advance 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184108" id="dx184108" value="D">D. in vain
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184108&#39;);" class="am-btn am-btn-success">
+						<span id="d184108" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184108d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184108dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184109">57. The chemical factory was tom down  protecting the environment.</p> -->
+						<pre><code id="184109">57. The chemical factory was tom down  protecting the environment.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184109" id="dx184109" value="A">A. in spite    of 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184109" id="dx184109" value="B">B. in honor of
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184109" id="dx184109" value="C">C. in the name of 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184109" id="dx184109" value="D">D. in favor of
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184109&#39;);" class="am-btn am-btn-success">
+						<span id="d184109" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184109d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184109dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184110">58. The historical church was damaged in a fire attack on 21 Dec, 2007.</p> -->
+						<pre><code id="184110">58. The historical church was damaged in a fire attack on 21 Dec, 2007.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184110" id="dx184110" value="A">A.extensively              
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184110" id="dx184110" value="B">B.intensively
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184110" id="dx184110" value="C">C. decisively                                                                              
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184110" id="dx184110" value="D">D.repeatedly
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184110&#39;);" class="am-btn am-btn-success">
+						<span id="d184110" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184110d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184110dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184111">59. Many people complain of the rapid of modem life.</p> -->
+						<pre><code id="184111">59. Many people complain of the rapid of modem life.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184111" id="dx184111" value="A">A.rate 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184111" id="dx184111" value="B">B.speed
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184111" id="dx184111" value="C">C.growth 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184111" id="dx184111" value="D">D.pace
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184111&#39;);" class="am-btn am-btn-success">
+						<span id="d184111" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184111d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184111dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184112">60. We can't emphasize the importance of air and water fur the survival of all species.</p> -->
+						<pre><code id="184112">60. We can't emphasize the importance of air and water fur the survival of all species.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184112" id="dx184112" value="A">A.too much                                            
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184112" id="dx184112" value="B">B.very much
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184112" id="dx184112" value="C">C.pretty much 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184112" id="dx184112" value="D">D. quite much
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184112&#39;);" class="am-btn am-btn-success">
+						<span id="d184112" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184112d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184112dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184113">61. Language belongs to each member of the society, to the cleaner _ to the professor.</p> -->
+						<pre><code id="184113">61. Language belongs to each member of the society, to the cleaner _ to the professor.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184113" id="dx184113" value="A">A. as far as 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184113" id="dx184113" value="B">B. the same as
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184113" id="dx184113" value="C">C. as long as 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184113" id="dx184113" value="D">D. as much as
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184113&#39;);" class="am-btn am-btn-success">
+						<span id="d184113" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184113d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184113dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184114">62. There are ten stories in this book, are the most interesting ones.</p> -->
+						<pre><code id="184114">62. There are ten stories in this book, are the most interesting ones.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184114" id="dx184114" value="A">A. the first four of them 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184114" id="dx184114" value="B">B. the first four of those
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184114" id="dx184114" value="C">C. the first four of which 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184114" id="dx184114" value="D">D. the first four
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184114&#39;);" class="am-btn am-btn-success">
+						<span id="d184114" style="display: none;" score="0" answer="C">
+							<div class="am-panel am-panel-success" id="d184114d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184114dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184115">63. While being questioned on the court, the man denied_the old lady's necklace.</p> -->
+						<pre><code id="184115">63. While being questioned on the court, the man denied_the old lady's necklace.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184115" id="dx184115" value="A">A.having taken   
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184115" id="dx184115" value="B">B.taking
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184115" id="dx184115" value="C">C.to have taken  
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184115" id="dx184115" value="D">D.to take
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184115&#39;);" class="am-btn am-btn-success">
+						<span id="d184115" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184115d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184115dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184116">64. You should respect others' opinions, and at the same time you should insist on _____you believe is right.</p> -->
+						<pre><code id="184116">64. You should respect others' opinions, and at the same time you should insist on _____you believe is right.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184116" id="dx184116" value="A">A.what 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184116" id="dx184116" value="B">B.that
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184116" id="dx184116" value="C">C.which 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184116" id="dx184116" value="D">D.where
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184116&#39;);" class="am-btn am-btn-success">
+						<span id="d184116" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184116d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184116dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184117">65. It as known to us all that Johnson had broken his promise_ he would give  each of us a small gift.</p> -->
+						<pre><code id="184117">65. It as known to us all that Johnson had broken his promise_ he would give  each of us a small gift.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184117" id="dx184117" value="A">A.as 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184117" id="dx184117" value="B">B.what
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184117" id="dx184117" value="C">C.which 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184117" id="dx184117" value="D">D.that
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184117&#39;);" class="am-btn am-btn-success">
+						<span id="d184117" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184117d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184117dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184118">66. As a new graduate, he doesn't know it takes to start a business here.</p> -->
+						<pre><code id="184118">66. As a new graduate, he doesn't know it takes to start a business here.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184118" id="dx184118" value="A">A. what 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184118" id="dx184118" value="B">B. how
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184118" id="dx184118" value="C">C. when 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184118" id="dx184118" value="D">D. which
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184118&#39;);" class="am-btn am-btn-success">
+						<span id="d184118" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184118d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184118dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184119">67. Not until I began to work did I realize how much time I .</p> -->
+						<pre><code id="184119">67. Not until I began to work did I realize how much time I .</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184119" id="dx184119" value="A">A. wasted 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184119" id="dx184119" value="B">B. have wasted
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184119" id="dx184119" value="C">C. had wasted 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184119" id="dx184119" value="D">D. was wasted
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184119&#39;);" class="am-btn am-btn-success">
+						<span id="d184119" style="display: none;" score="0" answer="C">
+							<div class="am-panel am-panel-success" id="d184119d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184119dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184120">68. Have you checked all the CDs to the mountainous area next week?</p> -->
+						<pre><code id="184120">68. Have you checked all the CDs to the mountainous area next week?</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184120" id="dx184120" value="A">A.to be sent 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184120" id="dx184120" value="B">B.sent
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184120" id="dx184120" value="C">C.sending 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184120" id="dx184120" value="D">D.being sent
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184120&#39;);" class="am-btn am-btn-success">
+						<span id="d184120" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184120d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184120dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184121">69. The literature teacher saw a Hollywood movie and insisted his students_to see it.</p> -->
+						<pre><code id="184121">69. The literature teacher saw a Hollywood movie and insisted his students_to see it.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184121" id="dx184121" value="A">A. went 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184121" id="dx184121" value="B">B. go
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184121" id="dx184121" value="C">C. is going 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184121" id="dx184121" value="D">D. will go
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184121&#39;);" class="am-btn am-btn-success">
+						<span id="d184121" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184121d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184121dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184122">70. Having finished his homework, he went on_ a novel written by Dickens.</p> -->
+						<pre><code id="184122">70. Having finished his homework, he went on_ a novel written by Dickens.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184122" id="dx184122" value="A">A. to read 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184122" id="dx184122" value="B">B. reading
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184122" id="dx184122" value="C">C. with reading 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184122" id="dx184122" value="D">D. read
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184122&#39;);" class="am-btn am-btn-success">
+						<span id="d184122" style="display: none;" score="0" answer="A">
+							<div class="am-panel am-panel-success" id="d184122d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184122dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184123">71 . John Smith, a diligent student, never refuses to _  more responsibilities that are assigned to him.</p> -->
+						<pre><code id="184123">71 . John Smith, a diligent student, never refuses to _  more responsibilities that are assigned to him.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184123" id="dx184123" value="A">A. take in 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184123" id="dx184123" value="B">B. take up
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184123" id="dx184123" value="C">C. take off 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184123" id="dx184123" value="D">D. take on
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184123&#39;);" class="am-btn am-btn-success">
+						<span id="d184123" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184123d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184123dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184124">72. A news report is usually very shorty_ when it is about something very important.</p> -->
+						<pre><code id="184124">72. A news report is usually very shorty_ when it is about something very important.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184124" id="dx184124" value="A">A. except 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184124" id="dx184124" value="B">B. besides
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184124" id="dx184124" value="C">C. apart from 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184124" id="dx184124" value="D">D. except that
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184124&#39;);" class="am-btn am-btn-success">
+						<span id="d184124" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184124d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184124dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184125">73. When we arrived at the airport, we were told our flight _</p> -->
+						<pre><code id="184125">73. When we arrived at the airport, we were told our flight _</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184125" id="dx184125" value="A">A. had cancelled 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184125" id="dx184125" value="B">B. had been cancelled
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184125" id="dx184125" value="C">C. has been cancelled 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184125" id="dx184125" value="D">D. cancelled
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184125&#39;);" class="am-btn am-btn-success">
+						<span id="d184125" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184125d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184125dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184126">74. Millions of Americans lake vitamins and minerals,_ that these pills can help to prevent serious illnesses.</p> -->
+						<pre><code id="184126">74. Millions of Americans lake vitamins and minerals,_ that these pills can help to prevent serious illnesses.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184126" id="dx184126" value="A">A. convinced 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184126" id="dx184126" value="B">B. convincing
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184126" id="dx184126" value="C">C. to convince 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184126" id="dx184126" value="D">D. to be convinced
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184126&#39;);" class="am-btn am-btn-success">
+						<span id="d184126" style="display: none;" score="0" answer="B">
+							<div class="am-panel am-panel-success" id="d184126d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184126dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184127">75._____relatively costly, the engine is highly efficient and needs servicing infrequently.</p> -->
+						<pre><code id="184127">75._____relatively costly, the engine is highly efficient and needs servicing infrequently.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184127" id="dx184127" value="A">A. Even 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184127" id="dx184127" value="B">B. It is
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184127" id="dx184127" value="C">C. There is 
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184127" id="dx184127" value="D">D. Even though
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184127&#39;);" class="am-btn am-btn-success">
+						<span id="d184127" style="display: none;" score="0" answer="D">
+							<div class="am-panel am-panel-success" id="d184127d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184127dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+		 		
+		 		
+		 		
+			
+		 		<h1>Part IV Cloze (10 points)(Directions: There are 10 numbered blanks in the following passage. For each blank, there are 4 choices marked A, B, C and D Choose the best one and mark your answer on the ANSSHTR SHEET)</h1>
+		 		
+					
+						<!-- <p style="white-space: pre-wrap;" id="184053">Directions: More and more people are now shopping online. Write an essay in about 120 words on the topic of "Online Shopping ". You may discuss the advantages and disadvantages of this new way of shopping OR describe your experiences of shopping online. Write your essay on the ANWSER SHEET
+        
+               A woman and a man get into a car accident,and it's a bad one. Both cars are totally destroyed, but amazingly 76           of them is hurt.
+  After they crawl out of their cars, the woman says，"So you’re a man, that’s interesting. And I’m a woman... Wow! Just 77      our cars. There's nothing left, but 78      we are unhurt. This must be a sign from God that 79     should meet and become friends and live together in peace the rest of our days."
+  The man replies, I agree with you completely; this must be a sign from God!”
+  The woman continues, "And look at this-here's another 80      . My car is completely destroyed 81      this bottle of wine didn't break. Surely God wants us to drink this wine and 82       our good fortune.”
+  So she hands the bottle to the man. The man nods his head 83  . opens it and takes a few big swallows from the bottle, then hands it back to the woman. The woman takes the bottle, immediately 84     the cap back on, and hands it back to the man.
+  The man takes the bottle and asks, "Aren't you having any?" The woman replies, "No. I think I will just 85    the police..."</p> -->
+						<pre><code id="184053">Directions: More and more people are now shopping online. Write an essay in about 120 words on the topic of "Online Shopping ". You may discuss the advantages and disadvantages of this new way of shopping OR describe your experiences of shopping online. Write your essay on the ANWSER SHEET
+        
+               A woman and a man get into a car accident,and it's a bad one. Both cars are totally destroyed, but amazingly 76           of them is hurt.
+  After they crawl out of their cars, the woman says，"So you’re a man, that’s interesting. And I’m a woman... Wow! Just 77      our cars. There's nothing left, but 78      we are unhurt. This must be a sign from God that 79     should meet and become friends and live together in peace the rest of our days."
+  The man replies, I agree with you completely; this must be a sign from God!”
+  The woman continues, "And look at this-here's another 80      . My car is completely destroyed 81      this bottle of wine didn't break. Surely God wants us to drink this wine and 82       our good fortune.”
+  So she hands the bottle to the man. The man nods his head 83  . opens it and takes a few big swallows from the bottle, then hands it back to the woman. The woman takes the bottle, immediately 84     the cap back on, and hands it back to the man.
+  The man takes the bottle and asks, "Aren't you having any?" The woman replies, "No. I think I will just 85    the police..."</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184053" id="dx184053" value="A">A.both	
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184053" id="dx184053" value="B">B.either
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184053" id="dx184053" value="C">C.none
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184053" id="dx184053" value="D">D.neither
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184053&#39;);" class="am-btn am-btn-success">
+						<span id="d184053" style="display: none;" score="1" answer="D">
+							<div class="am-panel am-panel-success" id="d184053d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184053dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184128">After they crawl out of their cars, the woman says，"So you’re a man, that’s interesting. And I’m a woman... Wow! Just 77_our cars. </p> -->
+						<pre><code id="184128">After they crawl out of their cars, the woman says，"So you’re a man, that’s interesting. And I’m a woman... Wow! Just 77_our cars. </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184128" id="dx184128" value="A">A.clear away
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184128" id="dx184128" value="B">B.check up
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184128" id="dx184128" value="C">C.look at
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184128" id="dx184128" value="D">D.deal with
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184128&#39;);" class="am-btn am-btn-success">
+						<span id="d184128" style="display: none;" score="1" answer="C">
+							<div class="am-panel am-panel-success" id="d184128d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184128dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184130">There's nothing left, but 78_we are unhurt. </p> -->
+						<pre><code id="184130">There's nothing left, but 78_we are unhurt. </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184130" id="dx184130" value="A">A.fortunately
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184130" id="dx184130" value="B">B.unnecessarily
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184130" id="dx184130" value="C">C.unusually
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184130" id="dx184130" value="D">D.eventually
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184130&#39;);" class="am-btn am-btn-success">
+						<span id="d184130" style="display: none;" score="1" answer="A">
+							<div class="am-panel am-panel-success" id="d184130d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184130dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184131">This must be a sign from God that 79_should meet and become friends and live together in peace the rest of our days."
+  The man replies, I agree with you completely; this must be a sign from God!”</p> -->
+						<pre><code id="184131">This must be a sign from God that 79_should meet and become friends and live together in peace the rest of our days."
+  The man replies, I agree with you completely; this must be a sign from God!”</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184131" id="dx184131" value="A">A. they
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184131" id="dx184131" value="B">B.you
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184131" id="dx184131" value="C">C.people
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184131" id="dx184131" value="D">D.we
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184131&#39;);" class="am-btn am-btn-success">
+						<span id="d184131" style="display: none;" score="1" answer="D">
+							<div class="am-panel am-panel-success" id="d184131d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184131dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184132">The woman continues, "And look at this-here's another 80_ . </p> -->
+						<pre><code id="184132">The woman continues, "And look at this-here's another 80_ . </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184132" id="dx184132" value="A">A.stimulus
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184132" id="dx184132" value="B">B.message	
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184132" id="dx184132" value="C">C.matter
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184132" id="dx184132" value="D">D.suggestion
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184132&#39;);" class="am-btn am-btn-success">
+						<span id="d184132" style="display: none;" score="1" answer="A">
+							<div class="am-panel am-panel-success" id="d184132d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184132dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184133">My car is completely destroyed 81_ this bottle of wine didn't break. </p> -->
+						<pre><code id="184133">My car is completely destroyed 81_ this bottle of wine didn't break. </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184133" id="dx184133" value="A">A.and
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184133" id="dx184133" value="B">B.or
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184133" id="dx184133" value="C">C.but
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184133" id="dx184133" value="D">D.for
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184133&#39;);" class="am-btn am-btn-success">
+						<span id="d184133" style="display: none;" score="1" answer="C">
+							<div class="am-panel am-panel-success" id="d184133d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184133dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:C </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184134">Surely God wants us to drink this wine and 82_ our good fortune.”</p> -->
+						<pre><code id="184134">Surely God wants us to drink this wine and 82_ our good fortune.”</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184134" id="dx184134" value="A">A.celebrate	
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184134" id="dx184134" value="B">B.congratulate
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184134" id="dx184134" value="C">C.continue	
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184134" id="dx184134" value="D">D.confirm
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184134&#39;);" class="am-btn am-btn-success">
+						<span id="d184134" style="display: none;" score="1" answer="A">
+							<div class="am-panel am-panel-success" id="d184134d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184134dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:A </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184172">So she hands the bottle to the man. The man nods his head 83 _ . opens it and takes a few big swallows from the bottle, then hands it back to the woman. </p> -->
+						<pre><code id="184172">So she hands the bottle to the man. The man nods his head 83 _ . opens it and takes a few big swallows from the bottle, then hands it back to the woman. </code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184172" id="dx184172" value="A">A.in peace
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184172" id="dx184172" value="B">B.in harmony
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184172" id="dx184172" value="C">C.in practice 
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184172" id="dx184172" value="D">D.in agreement
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184172&#39;);" class="am-btn am-btn-success">
+						<span id="d184172" style="display: none;" score="1" answer="D">
+							<div class="am-panel am-panel-success" id="d184172d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184172dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:D </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184173">The woman takes the bottle, immediately 84_the cap back on, and hands it back to the man.</p> -->
+						<pre><code id="184173">The woman takes the bottle, immediately 84_the cap back on, and hands it back to the man.</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184173" id="dx184173" value="A">A.takes
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184173" id="dx184173" value="B">B.puts	
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184173" id="dx184173" value="C">C.locks
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184173" id="dx184173" value="D">D.gets
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184173&#39;);" class="am-btn am-btn-success">
+						<span id="d184173" style="display: none;" score="1" answer="B">
+							<div class="am-panel am-panel-success" id="d184173d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184173dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+						<!-- <p style="white-space: pre-wrap;" id="184174"> The man takes the bottle and asks, "Aren't you having any?" The woman replies, "No. I think I will just 85_ the police..."</p> -->
+						<pre><code id="184174"> The man takes the bottle and asks, "Aren't you having any?" The woman replies, "No. I think I will just 85_ the police..."</code></pre>
+						
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184174" id="dx184174" value="A">A.wait for
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184174" id="dx184174" value="B">B.call on
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184174" id="dx184174" value="C">C.send for
+
+					      </label>
+					    </div>
+						
+						<div class="am-radio">
+					      <label>
+							<input type="radio" name="dx184174" id="dx184174" value="D">D.run into
+					      </label>
+					    </div>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184174&#39;);" class="am-btn am-btn-success">
+						<span id="d184174" style="display: none;" score="1" answer="B">
+							<div class="am-panel am-panel-success" id="d184174d">
+  								<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184174dd">√ 正确</span> 答案解析</div>
+								<div class="am-panel-bd">
+									<p>答案:B </p>
+									<p style="white-space: pre-wrap;">解析：</p>
+									
+								</div>
+							</div>
+						</span>
+					
+		 		
+		 		
+		 		
+			
+		 		<h1>Part V Writing (15 points)(Directions: More and more people are now shopping online. Write an essay in about 120 words on the topic of "Online Shopping ". You may discuss the advantages and disadvantages of this new way of shopping OR describe your experiences of shopping online. Write your essay on the ANWSER SHEET)</h1>
+		 		
+		 		
+		 		
+		 			
+		 				<!-- <p style="white-space: pre-wrap;" id="184129">Directions: More and more people are now shopping online. Write an essay in about 120 words on the topic of "Online Shopping ". You may discuss the advantages and disadvantages of this new way of shopping OR describe your experiences of shopping online. Write your essay on the ANWSER SHEET</p> -->
+		 				<pre><code id="184129">Directions: More and more people are now shopping online. Write an essay in about 120 words on the topic of "Online Shopping ". You may discuss the advantages and disadvantages of this new way of shopping OR describe your experiences of shopping online. Write your essay on the ANWSER SHEET</code></pre>
+						
+					    <input type="button" value="查看答案" onclick="showAnswer(&#39;184129&#39;);" class="am-btn am-btn-success">
+						<div class="am-panel am-panel-success" id="d184129" style="display: none;">
+ 							<div class="am-panel-hd"><span class="am-badge am-badge-success am-radius" id="d184129dd"></span> 答案解析</div>
+							<div class="am-panel-bd">
+								<p style="white-space: pre-wrap;">解析：nline Shopping
+Nowadays with the rapid development and increasing popularity of the information technology，shopping on the Internet has been a fashion, especially among the youngsters.
+Online shopping has made our daily life more convenient and comfortable. For example，shopping on the Internet can save students a great deal of time on the way between home and store，so they would be able to concentrate more time and energy on their academic work. And also, the Internet has shorten the distance between manufacturers and consumers and thus we can even buy goods in other countries. On the other hand，lack of the face-to-face deal makes online shopping less reliable and trustworthy. What’s more, the delivery will increase the risk of items’ damage.
+Therefore, in my opinion，shopping on the internet is a irreversible trend. More and more people will become accustomed to it. It will be much more popular in the near future. And at the same time, we should take some measures to make it become perfect.</p>
+								
+							</div>
+						</div>
+
+		 			
+		 		
+			
+		</div>
+	</div>
+	<center>
+		<input type="button" value="交卷" onclick="testFinished();">
+	</center>
+	<footer class="am-margin-top">
+	 <hr>
+	 <p class="am-text-center"><small>&nbsp;</small></p>
+	</footer>
+
+	
+</body></html>
