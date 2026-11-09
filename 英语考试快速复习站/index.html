@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="面向英语基础薄弱学习者的广东普通专升本英语快速复习站" />
-  <title>英语拆句 · 广东普通专升本快速复习</title>
+  <meta name="description" content="适合认识常见单词但读句不熟练的学习者：从常用词块到复杂句的分层练习。" />
+  <title>英语拆句 · 从熟词到读懂句子</title>
+  <link rel="stylesheet" href="reading.css" />
   <style>
     :root {
       --ink: #1f2a24;
@@ -319,22 +320,23 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">E</div>
-        <div><strong>英语拆句</strong><small>PASS WITH CLARITY</small></div>
+        <div><strong>英语拆句</strong><small>READ WITH CLARITY</small></div>
       </div>
       <nav class="nav" aria-label="主导航">
         <div class="nav-group">
           <div class="nav-label">开始学习</div>
-          <a class="active" href="index.html?view=today" data-view-link="today"><span class="icon">⌂</span> 今日复习</a>
+          <a class="active" href="index.html?view=reading" data-view-link="reading"><span class="icon">⌂</span> 每次练一句</a>
+          <a href="index.html?view=today" data-view-link="today"><span class="icon">↗</span> 学习方法与进度</a>
         </div>
         <div class="nav-group">
           <div class="nav-label">核心训练</div>
-          <a href="index.html?view=sentences" data-view-link="sentences"><span class="icon">⌁</span> 句子拆解</a>
+          <a href="index.html?view=sentences" data-view-link="sentences"><span class="icon">⌁</span> 扩展句子拆解</a>
           <a href="index.html?view=articles" data-view-link="articles"><span class="icon">¶</span> 文章拆解</a>
-          <a href="vocabulary.html"><span class="icon">V</span> 高频词与动词</a>
+          <a href="vocabulary.html"><span class="icon">V</span> 词汇与动词查询</a>
         </div>
         <div class="nav-group">
-          <div class="nav-label">备考资料</div>
-          <a href="index.html?view=exam" data-view-link="exam"><span class="icon">▦</span> 广东考试题型</a>
+          <div class="nav-label">旧资料 · 非学习主线</div>
+          <a href="index.html?view=exam" data-view-link="exam"><span class="icon">▦</span> 历史题型资料</a>
           <a href="index.html?view=practice" data-view-link="practice"><span class="icon">✓</span> 基础专项练习</a>
         </div>
         <div class="nav-group">
@@ -343,9 +345,9 @@
         </div>
       </nav>
       <div class="side-note">
-        <div class="days">Day 06</div>
-        <p>离完成第一轮基础复习还有 8 天</p>
-        <div class="bar"><i></i></div>
+        <div class="days" id="sideReadingCount">0 / 12</div>
+        <p>已练组数，不是掌握率。位置只保存在当前浏览器；中断后接着练。</p>
+        <div class="bar"><i id="sideReadingBar" style="width:0"></i></div>
       </div>
     </aside>
 
@@ -353,41 +355,53 @@
       <button class="menu-btn floating-menu" id="menuBtn" aria-label="打开菜单">☰</button>
 
       <div class="content">
+        <div class="view-pane" data-view-pane="reading" hidden>
+          <header class="reading-intro">
+            <div class="eyebrow">认识单词，开始读懂关系</div>
+            <h1>把认识的词，<br>连成<em>读懂的句子</em></h1>
+            <p>先认完整的动作和名词块，再接小句，最后读组合句。每次 3–10 分钟：回忆旧句 → 读一层 → 换句验证。12 组是顺序，不是 12 天期限。</p>
+          </header>
+          <div class="reading-tools"><button id="readingReview">复习已练句 · 优先待巩固</button><span class="reading-muted" id="readingProgress"></span></div>
+          <p id="readingNotice" role="status"></p>
+          <div class="reading-layout"><details class="reading-navigation" id="readingNavigation" open><summary>选择练习组 · 共 12 组</summary><nav class="card reading-route" id="readingRoute" aria-label="十二组阅读路线"></nav></details><article class="card reading-stage" id="readingStage"></article></div>
+          <p class="reading-muted">这些是按阅读价值挑选的常用结构，不是严格词频排名。英文例句与解析为本站原创；设备朗读用于辅助，不代替真实听力材料。</p>
+          <noscript>本站交互练习需要 JavaScript。也可阅读<a href="../英语系统入门计划/00-轻量阅读入门/03-从熟词到复杂句.md">本地学习说明</a>。</noscript>
+        </div>
         <div class="view-pane active" data-view-pane="today">
         <section class="hero" id="today">
           <div>
-            <div class="eyebrow">2026 广东普通专升本英语</div>
+            <div class="eyebrow">系统入门 · 阅读与日常理解</div>
             <h1>别急着翻译，<br>先看懂句子的<em>骨架</em></h1>
-            <p class="hero-copy">给语法薄弱、词汇量不大的学习者。每个句子都拆成能看懂的色块：先抓“谁做什么”，再补时间、地点和原因。</p>
+            <p class="hero-copy">适合认识一些常见词、但连成句反应不过来的学习者。先读懂整块动作、对象和关系，再逐步处理从句，不重复背已会的 am / is / are。</p>
           </div>
           <div class="hero-meta" aria-label="学习概览">
-            <div class="metric"><b>14</b><span>天快速入门</span></div>
-            <div class="metric"><b>3000</b><span>大纲认知词汇</span></div>
-            <div class="metric"><b>3</b><span>部分核心题型</span></div>
+            <div class="metric"><b>12</b><span>组常用结构</span></div>
+            <div class="metric"><b>3</b><span>层递进例句</span></div>
+            <div class="metric"><b>10</b><span>分钟一次，可拆开</span></div>
           </div>
         </section>
 
-        <div class="section-head"><div><h2>今天，只学一个关键动作</h2><p>学会定位谓语，长句就有了入口。</p></div><button class="text-btn" id="resetBtn">重置进度 ↺</button></div>
+        <div class="section-head"><div><h2>今天，只练一个结构</h2><p>反复读旧句，也验证能否读懂同结构的新句。</p></div><button class="text-btn" id="resetBtn">清除读句记录 ↺</button></div>
         <section class="today-grid">
           <article class="card lesson">
             <div class="lesson-top">
-              <div><span class="lesson-tag">今日重点 · 预计 10 分钟</span><h3>先找到句子的发动机：谓语动词</h3><p>看到一个句子，第一问不是“每个词什么意思”，而是“发生了什么”。</p></div>
+              <div><span class="lesson-tag">一次 3–10 分钟</span><h3>从完整词块到多层小句</h3><p>找主角与完整动作，括出修饰和从句，再读回条件、否定和指代。需要的词义就在同页。</p></div>
             </div>
             <button class="continue-btn" id="continueBtn">继续学习&nbsp; →</button>
-            <div class="lesson-progress"><div class="bar"><i id="progressBar"></i></div><span id="progressText">已完成 68%</span></div>
+            <div class="lesson-progress"><div class="bar"><i id="progressBar" style="width:0"></i></div><span id="progressText">已练 0 / 12 组</span></div>
           </article>
           <aside class="card plan">
             <small>今日学习清单</small><h3>轻一点，但每天前进</h3>
-            <div class="plan-row"><span>① 句子骨架</span><span>6 分钟</span></div>
-            <div class="plan-row"><span>② 高频词块</span><span>3 分钟</span></div>
-            <div class="plan-row"><span>③ 真题小测</span><span>1 分钟</span></div>
-            <div class="mini">完成标准：能用中文说出每个色块的作用</div>
+            <div class="plan-row"><span>① 回忆上一句</span><span>2 分钟</span></div>
+            <div class="plan-row"><span>② 逐层读新句</span><span>6 分钟</span></div>
+            <div class="plan-row"><span>③ 换句验证</span><span>2 分钟</span></div>
+            <div class="mini">先理解意思，不必先报出全部语法术语；隔天复习，逐渐撤掉提示。</div>
           </aside>
         </section>
         </div>
 
         <div class="view-pane" data-view-pane="sentences" hidden>
-        <div class="section-head" id="sentence-lab"><div><h2>句子拆解室</h2><p>1500+ 条核心结构训练；覆盖高频词、核心动词与考试逻辑。</p></div><div class="sentence-nav"><button id="prevSentence">← 上一句</button><button id="randomSentence">随机一句</button><button id="nextSentence">下一句 →</button></div></div>
+        <div class="section-head" id="sentence-lab"><div><h2>扩展句子拆解室</h2><p>递进例句与旧资料选句，供按需查询。日常学习请从“每次练一句”开始，不必随机刷完。</p></div><div class="sentence-nav"><button id="prevSentence">← 上一句</button><button id="randomSentence">随机一句</button><button id="nextSentence">下一句 →</button></div></div>
         <section class="card lab">
           <div class="lab-toolbar">
             <div class="steps" role="tablist" aria-label="句子理解层级">
@@ -465,14 +479,15 @@
         </section>
         </div>
 
-        <footer class="footer-note"><span>广东版 · 依据 2026 公开大纲、现有英语资料与历年真题考点整理</span><span>学习原则：先理解，再记忆；先主干，再细节。</span></footer>
+        <footer class="footer-note"><span>英语系统入门 · 以自主阅读与日常理解为目标</span><span>先读完整的块，再理解关系；旧资料按需查阅。</span></footer>
       </div>
     </main>
   </div>
 
   <script src="data/vocabulary-data.js"></script>
+  <script src="data/reading-vocabulary.js"></script>
   <script src="data/grammar-reference.js"></script>
-  <script src="data/sentence-library.js"></script>
+  <script src="data/reading-path.js"></script>
   <script src="data/exam-sentence-library.js"></script>
   <script src="data/article-library.js"></script>
   <script>
@@ -497,7 +512,7 @@
           { text: 'close friends', type: 'object', role: '补语｜成为什么', explain: 'close friends 说明“我们变成了什么”：亲密的朋友。这里不是动作承受者，而是主语的新身份。', tip: 'become 后面常接身份或状态，回答“变成什么 / 怎么样”。' },
           { text: 'because we spend a lot of time together', type: 'modifier', role: '原因｜为什么', explain: 'because 引出原因：因为我们经常待在一起。做题时它也是强烈的因果信号。', tip: 'because 后接完整小句，回答“为什么”。' }
         ],
-        translation: '虽然我们性格不同，但因为经常相处，我们已经成了亲密的朋友。',
+        translation: '虽然我们不同，但因为经常待在一起，我们已经成了亲密的朋友。',
         plain: '主干是：“我们 — 已经成为 — 好朋友”。Although 是让步，because 是原因。',
         imitate: 'Although the task is difficult, we have made progress because we practice every day.'
       },
@@ -506,7 +521,7 @@
           { text: 'It', type: 'subject', role: '形式主语｜先占位置', explain: '这里的 It 不指某个具体东西，只是先占主语位置。真正要说的事情在后面的 to believe。', tip: '看到 It is + 形容词 + to do，可先译后面的 to do。' },
           { text: 'is', type: 'verb', role: '系动词｜是什么状态', explain: 'is 把主语和后面的状态 hard 连接起来。', tip: 'be 后面若在说明状态，常按“是 / 很……”理解。' },
           { text: 'hard', type: 'object', role: '表语｜怎么样', explain: 'hard 说明这件事的感受：很难（相信）。', tip: 'It is hard to do = 做某事很难。整块记忆比拆词更快。' },
-          { text: 'to believe', type: 'modifier', role: '真正内容｜什么很难', explain: 'to believe 才是逻辑上真正的主语：相信这件事很难。中文通常把它提前。', tip: '英文头重脚轻时常用 It 占位，中文翻译时把真正内容提到前面。' },
+          { text: 'to believe', type: 'modifier', role: '真正内容｜什么很难', explain: 'to believe 连同后面的内容才是被评价的事情：相信这件事很难。中文通常把它提前。', tip: '英文为避免主语过长，常用 It 占位，中文翻译时把真正内容提到前面。' },
           { text: 'that a stranger became my close friend', type: 'modifier', role: '宾语从句｜相信什么', explain: 'that 后面是一整件被相信的事：一个陌生人成了我的好友。', tip: '动词后的 that 小句，常可整体看成“……这件事”。' }
         ],
         translation: '很难相信，一个原本陌生的人竟然成了我的亲密朋友。',
@@ -514,7 +529,19 @@
         imitate: 'It is important to remember that practice makes progress.'
       }
     ];
-    const sentenceData = [...coreSentenceData, ...(window.EXAM_SENTENCE_LIBRARY || []), ...(window.SENTENCE_LIBRARY || [])];
+    // 旧自动组合句库仍保存在仓库，但不再混入学习流：未逐句校对，存在主谓一致等问题。
+    const readingSentences = (window.READING_PATH || []).flatMap(lesson => lesson.examples.map(example => ({
+      chunks: example.chunks, translation: example.translation,
+      plain: `${example.spine} ${example.note}`, imitate: lesson.transfer.text,
+      source: `递进训练 · ${lesson.title}`,
+      words: example.chunks.filter(chunk => chunk.type === 'verb').map(chunk => ({
+        display: chunk.text.replace(/[,.!?]+$/, ''), lemma: chunk.text.toLowerCase(), kind: 'verb',
+        pos: '本句动作／状态块', meaning: chunk.explain, role: chunk.role,
+        grammar: '按本句整体理解', tip: example.note,
+        context: example.chunks.map(part => part.text).join(' ')
+      }))
+    })));
+    const sentenceData = [...coreSentenceData, ...readingSentences, ...(window.EXAM_SENTENCE_LIBRARY || [])];
 
     const stepHints = {
       1: '先别逐词翻译。读一遍，只问：这句话大概在说什么？',
@@ -527,7 +554,7 @@
     let wordMode = 'verbs';
     let activeWordKey = '';
     const grammarReference = window.GRAMMAR_REFERENCE || { sentences: [], verbs: {}, pronouns: [] };
-    const vocabularyMap = new Map((window.VOCABULARY_DATA || []).map(item => [item.word.toLowerCase(), item]));
+    const vocabularyMap = new Map([...(window.VOCABULARY_DATA || []), ...(window.READING_VOCABULARY || [])].map(item => [item.word.toLowerCase(), item]));
     const officialSupplementWords = new Set([
       'collect','support','follow','test','offer','grow','plan','choose','complete','library','check','create','express','prevent','remember','select','share','use','control','understand','prepare','record',
       'student','language','skill','every','day','yesterday','now','next','week','clear','final','result','some','learn','person','need','better','important','enough','time','unless','change','key','rule','data','volunteer','local','family','company','doctor','exercise','parent','child','idea','new','online','waste','report','problem','team','school','exam','question','mistake','coach','young','possible','opinion','main','several','daily','life','machine','small','unusual','goods','information','group','public','place','high','damage','part','personal','fact','digital','tool','supply',
@@ -785,7 +812,7 @@
       const tenseItems = entry.lemma === 'be' ? [
         ['一般现在', 'am / is / are'], ['一般过去', 'was / were'], ['进行结构', 'am/is/are being'], ['完成结构', 'have/has been'], ['将来结构', 'will be']
       ] : [
-        ['一般现在', `${verb.base} / ${verb.third}`], ['一般过去', verb.past], ['进行结构', `is ${verb.ing}`], ['完成结构', `has ${verb.participle}`], ['被动结构', `is ${verb.participle}`]
+        ['一般现在', `${verb.base} / ${verb.third}`], ['一般过去', verb.past], ['进行结构', 'be + -ing；状态义通常不用'], ['完成结构', `have/has + ${verb.participle}`], ['被动结构', 'be + 过去分词；须符合动词用法']
       ];
       const tenses = tenseItems.map(item => `<div class="tense-item"><b>${item[0]}</b>${item[1]}</div>`).join('');
       const helper = entry.helper && grammarReference.verbs[entry.helper]
@@ -908,7 +935,7 @@
       plainEl.textContent = activeStep === 4 ? '仿写方法：保留原来的句式骨架，只替换人物、动作或时间。先写对，再写复杂。' : item.plain;
       document.getElementById('sentenceMeaning').hidden = activeStep === 1;
       document.getElementById('translationLabel').textContent = activeStep === 4 ? '仿写示例 · 保留句式骨架' : '整句翻译 · 对照主干';
-      document.getElementById('chunkDetail').hidden = activeStep !== 2;
+      document.getElementById('chunkDetail').hidden = activeStep !== 2 && activeStep !== 3;
       document.getElementById('sentenceCount').textContent = `${item.source || '真题语境改编'} · ${String(sentenceIndex + 1).padStart(3, '0')} / ${sentenceData.length}`;
       document.getElementById('stepHint').textContent = stepHints[activeStep];
       document.getElementById('legend').style.opacity = activeStep === 1 ? '.35' : '1';
@@ -928,18 +955,11 @@
     document.getElementById('prevSentence').addEventListener('click', () => { sentenceIndex = (sentenceIndex - 1 + sentenceData.length) % sentenceData.length; activeWordKey = ''; renderSentence(); });
     document.getElementById('randomSentence').addEventListener('click', () => { sentenceIndex = Math.floor(Math.random() * sentenceData.length); activeWordKey = ''; renderSentence(); });
 
-    document.getElementById('continueBtn').addEventListener('click', () => {
-      const bar = document.getElementById('progressBar');
-      bar.style.width = '82%'; document.getElementById('progressText').textContent = '已完成 82%';
-      setView('sentences');
-    });
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      document.getElementById('progressBar').style.width = '0%'; document.getElementById('progressText').textContent = '已完成 0%';
-    });
+    document.getElementById('continueBtn').addEventListener('click', () => window.startReading());
     document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
-    const viewNames = { today: '今日复习', sentences: '句子拆解', articles: '文章拆解', exam: '广东考试题型', practice: '基础专项练习' };
+    const viewNames = { reading: '每次练一句', today: '学习方法与进度', sentences: '句子拆解', articles: '文章拆解', exam: '历史题型资料', practice: '基础专项练习' };
     function setView(name, updateUrl = true) {
-      const safeName = viewNames[name] ? name : 'today';
+      const safeName = viewNames[name] ? name : 'reading';
       document.querySelectorAll('[data-view-pane]').forEach(pane => {
         const active = pane.dataset.viewPane === safeName;
         pane.hidden = !active;
@@ -1049,7 +1069,8 @@
     document.querySelectorAll('[data-open-quiz]').forEach(btn => btn.addEventListener('click', () => openQuiz(btn.dataset.openQuiz)));
     renderArticleList();
     renderSentence();
-    setView(new URLSearchParams(location.search).get('view') || 'today', false);
+    setView(new URLSearchParams(location.search).get('view') || 'reading', false);
   </script>
+  <script src="reading.js"></script>
 </body>
 </html>

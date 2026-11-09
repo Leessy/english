@@ -1,0 +1,49 @@
+.reading-intro { max-width: 780px; margin-bottom: 22px; }
+.reading-intro h1 { font-size: clamp(28px, 4vw, 42px); }
+.reading-intro p { color: var(--muted); }
+.reading-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 20px; align-items: start; }
+.reading-route { display: grid; gap: 6px; padding: 12px; }
+.reading-navigation > summary { color: var(--green); cursor: pointer; padding: 10px 0; font-weight: 700; }
+.reading-pick { text-align: left; border: 1px solid transparent; border-radius: 10px; background: transparent; color: var(--ink); padding: 10px; cursor: pointer; }
+.reading-pick[aria-current="step"] { background: var(--green-soft); border-color: #97b3a2; }
+.reading-pick small { display: block; color: var(--muted); margin-top: 3px; }
+.reading-stage { padding: clamp(18px, 3vw, 30px); min-width: 0; }
+.reading-stage h2 { margin: 7px 0; font-size: 23px; line-height: 1.45; }
+.reading-stage h3 { font-size: 16px; margin: 20px 0 8px; }
+.reading-stage p { margin: 10px 0; }
+.reading-pattern { color: var(--green); font-weight: 700; overflow-wrap: anywhere; }
+.reading-muted { color: var(--muted); font-size: 13px; }
+.reading-tools { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; margin: 14px 0; }
+.reading-tools button, .reading-level, .reading-choice { border: 1px solid var(--line); background: #fffefa; color: var(--green); border-radius: 9px; padding: 10px 13px; cursor: pointer; }
+.reading-tools .reading-primary { background: var(--green); color: white; }
+.reading-tools button:disabled { opacity: .5; cursor: not-allowed; }
+.reading-level[aria-pressed="true"] { background: var(--green-soft); border-color: var(--green); font-weight: 700; }
+.reading-text { font: 500 clamp(21px, 2.3vw, 28px)/1.8 Georgia, serif; margin: 24px 0 12px; overflow-wrap: anywhere; }
+.reading-support { border-top: 1px solid var(--line); padding: 14px 0; }
+.reading-support summary { cursor: pointer; color: var(--green); font-weight: 700; }
+.reading-glossary { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.reading-glossary span { padding: 6px 9px; background: #f1f0e9; border-radius: 8px; font-size: 13px; }
+.reading-glossary b { color: var(--green); margin-right: 6px; }
+.reading-chunks { display: grid; gap: 8px; margin: 12px 0; }
+.reading-chunks > div { padding: 10px 12px; border-left: 3px solid var(--green); background: var(--green-soft); border-radius: 4px; }
+.reading-chunks .subject { border-color: var(--blue); background: var(--blue-soft); }
+.reading-chunks .verb { border-color: var(--red); background: var(--red-soft); }
+.reading-chunks .object { border-color: var(--amber); background: var(--amber-soft); }
+.reading-chunks strong { font-family: Georgia, serif; font-size: 18px; }
+.reading-chunks small { display: block; margin-top: 3px; }
+.reading-spine { border-left: 3px solid var(--green); padding: 8px 12px; background: #f1f0e9; }
+.reading-transfer { margin-top: 18px; padding-top: 5px; border-top: 1px solid var(--line); }
+.reading-transfer .reading-text { font-size: 21px; }
+.reading-options { display: grid; gap: 8px; }
+.reading-choice { text-align: left; color: var(--ink); }
+.reading-choice[aria-pressed="true"] { border-color: var(--green); background: var(--green-soft); }
+.reading-feedback { padding: 10px 0; min-height: 1.6em; }
+.reading-feedback:empty { display: none; }
+#readingNotice { font-size: 13px; color: var(--green); }
+.reading-checkpoint { margin-top: 15px; padding: 15px; border: 1px solid var(--line); border-radius: 12px; }
+@media (max-width: 800px) {
+  .reading-layout { grid-template-columns: 1fr; }
+  .reading-route { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reading-pick { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .view-pane.active { animation: none; } }
