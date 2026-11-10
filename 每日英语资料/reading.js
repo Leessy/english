@@ -91,21 +91,24 @@
     });
     document.getElementById('readingSpeak').addEventListener('click', () => {
       const status = document.getElementById('readingAudioStatus');
-      if (!('speechSynthesis' in window)) { status.textContent = '此浏览器不支持朗读，可自行慢读。'; return; }
-      speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(example.chunks.map(chunk => chunk.text).join(' '));
-      utterance.lang = 'en-US'; utterance.rate = .85;
-      utterance.onerror = () => { status.textContent = '未能朗读，请检查设备英语语音；也可自行慢读。'; };
-      utterance.onend = () => { status.textContent = '朗读结束。语音由设备提供。'; };
-      status.textContent = '使用设备语音朗读…'; speechSynthesis.speak(utterance);
+      ReaderLookup.speak(example.chunks.map(chunk => chunk.text).join(' '),status);
     });
     if (checkpoints[position]) {
       const [title, text, words, questions, answer] = checkpoints[position];
       stage.insertAdjacentHTML('beforeend', `<details class="reading-support reading-checkpoint"><summary>阶段整段练习 · ${title}</summary><p class="reading-text" lang="en">${escape(text)}</p><details><summary>同页词义</summary><p>${escape(words)}</p></details><p>${escape(questions)}</p><details><summary>核对大意与答案</summary><p>${escape(answer)}</p></details><p class="reading-muted">第一次按意思读；隔一天不看中文再读。仍卡住就只精读其中一句，不另开新词表。</p></details>`);
     }
+    if (window.ReaderLookup) {
+      const primary=stage.querySelector(':scope > .reading-text');
+      ReaderLookup.decorate(primary,{chunks:example.chunks,note:example.note,translation:example.translation,hints:example.hints});
+      const transferText=stage.querySelector('.reading-transfer .reading-text');
+      ReaderLookup.decorate(transferText,{note:transfer.explain,translation:transfer.translation,hints:transfer.hints});
+      stage.querySelectorAll('.reading-chunks strong').forEach((element,index)=>ReaderLookup.decorate(element,{chunks:[example.chunks[index]],note:example.note}));
+      stage.querySelectorAll('.reading-checkpoint [lang="en"]').forEach(element=>ReaderLookup.decorate(element));
+    }
     updateProgress();
   }
   window.startReading = () => { setView('reading'); stage.querySelector('h2').focus({preventScroll: true}); };
+  window.openReadingGroup = id => { const index=lessons.findIndex(lesson=>lesson.id===id);if(index>=0)select(index); };
   document.getElementById('readingReview').addEventListener('click', () => {
     const candidates = lessons.map((lesson, index) => ({index, value: records[lesson.id]})).filter(item => item.value === 'review');
     const pool = candidates.length ? candidates : lessons.map((lesson, index) => ({index, value: records[lesson.id]})).filter(item => item.value);

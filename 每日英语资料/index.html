@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Daily English：点词查义、常用句式复现与日常工作短文阅读。">
+  <title>Daily English · 每日英语资料</title>
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="reading.css">
+  <link rel="stylesheet" href="reader-lookup.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">E</span><span><strong>Daily English</strong><small>每日英语资料</small></span></a>
+      <nav class="nav" aria-label="主导航">
+        <a href="?view=fluency" data-view-link="fluency">↻ 常用句复现</a>
+        <a href="?view=verbs" data-view-link="verbs">v 动词形态复现</a>
+        <a href="?view=reading" data-view-link="reading">⌁ 句式分层</a>
+        <a href="?view=stories" data-view-link="stories">¶ 故事与泛读</a>
+        <a href="?view=core" data-view-link="core">≡ 核心词与词块</a>
+        <a href="?view=notebook" data-view-link="notebook">◇ 我的词块</a>
+        <a href="vocabulary.html">V 词汇与动词查询</a>
+        <a href="?view=today" data-view-link="today">↗ 学习方法与记录</a>
+      </nav>
+      <div class="side-note"><div class="days" id="sideReadingCount">0 / 12</div><p>句式分层已练组数，不是掌握率。能读懂后，可以直接做复现和短文阅读。</p><div class="bar"><i id="sideReadingBar"></i></div></div>
+    </aside>
+    <main class="main">
+      <button class="menu-btn floating-menu" id="menuBtn" aria-label="打开或关闭菜单" aria-controls="sidebar" aria-expanded="false">☰</button>
+      <div class="content">
+        <div data-speech-settings></div>
+        <section class="view-pane" data-view-pane="fluency">
+          <div class="eyebrow">DAILY ENGLISH · 同结构，多遇见</div>
+          <h1>能看懂，再慢慢<em>读顺</em></h1>
+          <p class="lead">108 句 · 生活和工作优先，文档长句随后。每次 3–6 句，先读大意，再听、再复述；不必重学 I am。</p>
+          <p class="lookup-help">点词查词形与词块；点“整句对照”看中译与解析。常见义先练熟，特殊用法可以后学。</p>
+          <p class="reading-muted">卡在 went / gone、did / done？到左侧“动词形态复现”，按一种形态连读 3 个语境。</p>
+          <div class="study-controls"><label for="fluencyTier">学习顺序</label><select id="fluencyTier"><option value="1">先练 · 生活与工作</option><option value="2">随后 · 文档与长句</option><option value="3">后学 · 压缩与混合</option><option value="all">全部结构</option></select><label for="fluencyGroup">结构</label><select id="fluencyGroup"></select><button class="text-btn" id="fluencyReview">复习待熟练句</button></div>
+          <article class="card daily-card" id="fluencyCard"></article>
+          <p id="fluencyStatus" class="stage-status" role="status"></p>
+        </section>
+
+        <section class="view-pane" data-view-pane="verbs" hidden>
+          <div class="eyebrow">VERBS IN CONTEXT · 同一个动词，不同用法</div><h1>不只认词形，还要<em>读懂它的作用</em></h1>
+          <p class="lead" id="verbOverview"></p>
+          <div class="study-controls"><label for="verbSelect">动词</label><select id="verbSelect"></select><label for="verbFormSelect">词形与用法</label><select id="verbFormSelect"></select></div>
+          <div id="verbCoverage" class="verb-coverage" aria-label="本动词各形态的材料覆盖"></div>
+          <h2 id="verbPracticeTitle" class="verb-practice-title"></h2><p id="verbPracticeNote" class="reading-muted"></p>
+          <div id="verbExamples"></div><p id="verbStatus" class="stage-status" role="status"></p>
+          <details class="reading-support"><summary>为什么有些形式后学？</summary><p>先练经常遇到的义项与搭配，不把形态表当成所有时态都能机械套用的公式。know、want 等状态义通常不用进行时；某些 -ing 用法、see 的“见面”义和 mean 的扩展用法安排后学，不是说它们不存在。</p><p>语法依据：<a href="https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/stative-verbs" target="_blank" rel="noopener">British Council：状态动词与动作义</a>。本页的分级与最低 3 条复现是本站教学安排，不是外部词频排名或掌握保证。</p></details>
+        </section>
+
+        <section class="view-pane" data-view-pane="reading" hidden>
+          <header class="reading-intro"><div class="eyebrow">结构卡住时，再拆一层</div><h1>把认识的词，连成<em>读懂的句子</em></h1><p>12 组递进解析。能看懂就去复现，不要求从第一组重学；点单词直接看词义与变形。</p></header>
+          <div class="reading-tools"><button id="readingReview">复习已练句 · 优先待巩固</button><span class="reading-muted" id="readingProgress"></span></div>
+          <p id="readingNotice" role="status"></p>
+          <div class="reading-layout"><details class="reading-navigation" id="readingNavigation" open><summary>选择练习组</summary><nav class="card reading-route" id="readingRoute" aria-label="十二组阅读路线"></nav></details><article class="card reading-stage" id="readingStage"></article></div>
+        </section>
+
+        <section class="view-pane" data-view-pane="stories" hidden>
+          <div class="eyebrow">READ FOR MEANING · 在故事里再次遇见</div>
+          <h1>先读大意，卡住才<em>点词</em></h1>
+          <p class="lead">8 篇短文 + 3 篇分章故事。先用短文热身，再每天读一章；句末“译”随点随看，不必翻到底部找答案。</p>
+          <div class="study-controls"><label for="storyLevel">阅读长度</label><select id="storyLevel"><option value="all">全部文章</option><option value="1">起步短文</option><option value="2">进阶短文</option><option value="3">分章中长篇</option></select><span class="reading-muted" id="storyProgress"></span></div>
+          <div class="story-layout"><details class="story-navigation" id="storyNavigation" open><summary>选择一篇短文</summary><nav id="storyList" class="card story-list" aria-label="短文列表"></nav></details><article id="storyReader" class="card story-reader"></article></div>
+        </section>
+
+        <section class="view-pane" data-view-pane="core" hidden>
+          <div class="eyebrow">LEARN IN CONTEXT · 带着句子记</div><h1>先熟练通用词，再扩展<em>场景词</em></h1>
+          <p class="lead">这里不是另一张背诵任务表。选一组，读同一个词在不同句子里的用法；词形、指代与中译都可以原地查看。</p>
+          <div class="study-controls"><label for="coreGroup">查看</label><select id="coreGroup"></select><label for="coreTier">词块优先级</label><select id="coreTier"><option value="1">先熟练</option><option value="2">随后扩展</option><option value="it">IT 按需</option><option value="3">后学辨析</option></select></div>
+          <p class="reading-muted" id="coreSummary"></p><div id="coreList"></div>
+          <details class="reading-support"><summary>为什么这样排序？800 词就够了吗？</summary><p>本站按“跨场景常用 + 当前阅读需要”分级，不把人工选词冒充严格的频率排行榜，也没有宣称存在统一的句式频率前十。IT 词是场景补充，不代表在全部英语中同样高频。</p><p>NGSL 的 2,809 个词头在其研究的一般文本中覆盖约 92% 的词次；词次覆盖率不等于理解率。800 词可作为起步范围，不能保证无障碍读任意文档。这里统计的词形、缩写条目也不能直接当作独立词汇量。</p><p>依据：<a href="https://www.newgeneralservicelist.com/new-general-service-list" target="_blank" rel="noopener">NGSL 项目说明</a>；<a href="https://www.oxfordlearnersdictionaries.com/about/oxford3000" target="_blank" rel="noopener">Oxford 3000 选词原则</a>。本站提供原创例句与中文解释，没有复制外部词表或词典释义。</p></details>
+        </section>
+
+        <section class="view-pane" data-view-pane="notebook" hidden>
+          <div class="eyebrow">YOUR WORDS · 带着原句再见一次</div><h1>我的词与<em>词块</em></h1>
+          <p class="lead">在查词卡里收藏，再回这里复习。先读原句、回忆意思，再展开答案；只记反复卡住的少量项目，不把每次点词都变成背诵任务。</p>
+          <div class="study-controls"><label for="notebookFilter">显示</label><select id="notebookFilter"><option value="review">待复习</option><option value="all">全部收藏</option></select><span id="notebookCount" class="reading-muted"></span></div>
+          <p id="notebookStatus" class="stage-status" role="status"></p><div id="notebookList" class="notebook-list"></div>
+        </section>
+
+        <section class="view-pane" data-view-pane="today" hidden>
+          <div class="eyebrow">一次 3–10 分钟</div><h1>理解 → 再遇见 → <em>越来越熟</em></h1>
+          <div class="method-grid">
+            <section class="card"><h2>今天不必学新规则</h2><p>先读 3 句同结构变式，再读一小段。遇到忘记的词，点开看当前词义、原形和搭配；合上提示后完整重读。</p><p>如果频繁停下来查词，就选“起步阅读”或只读一段。看懂比赶速度重要。</p><button class="continue-btn" id="continueBtn">去常用句复现 →</button></section>
+            <section class="card"><h2>结构基础记录</h2><div class="lesson-progress"><div class="bar"><i id="progressBar"></i></div><span id="progressText"></span></div><p>句式分层、复现、短文和词块使用独立记录，只保存在当前浏览器。换设备不自动同步。</p><button class="text-btn" id="resetBtn">清除句式分层记录</button><p class="reading-muted">只清除原 12 组的练习位置，不影响复现、短文和词块收藏。</p></section>
+          </div>
+          <p class="lead">每次开头先读上一句，隔几次重读一篇旧短文；已经理解的句子可以听一遍、模仿一遍。不把“点过词／读过一遍”当作熟练掌握。</p>
+        </section>
+        <noscript>交互查词需要 JavaScript。也可阅读<a href="../英语系统入门计划/README.md">本地学习计划</a>。</noscript>
+        <footer class="footer-note">Daily English · 每日英语资料。原创教学材料与本地词义提示；设备朗读仅作辅助。以自主阅读与日常理解为目标。</footer>
+      </div>
+    </main>
+  </div>
+  <script src="data/reading-vocabulary.js"></script>
+  <script src="data/reader-lexicon.js"></script>
+  <script src="data/reading-path.js"></script>
+  <script src="data/fluency-library.js"></script>
+  <script src="data/reader-stories.js"></script>
+  <script src="data/reader-long-stories.js"></script>
+  <script src="data/learning-priorities.js"></script>
+  <script src="data/reader-supplements.js"></script>
+  <script src="data/verb-forms-a.js"></script>
+  <script src="data/verb-forms-b.js"></script>
+  <script src="data/verb-forms-life.js"></script>
+  <script src="data/verb-form-plan.js"></script>
+  <script src="reader-speech.js"></script>
+  <script src="reader-lookup.js"></script>
+  <script src="reader-verbs.js"></script>
+  <script src="reader-core.js"></script>
+  <script src="site.js"></script>
+  <script src="reading.js"></script>
+  <script src="reader-library.js"></script>
+</body>
+</html>

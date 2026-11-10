@@ -1,0 +1,51 @@
+.lookup-token { display:inline; appearance:none; padding:0; margin:0; border:0; border-radius:3px; font:inherit; line-height:inherit; color:inherit; background:transparent; cursor:pointer; text-align:inherit; }
+.lookup-token.in-phrase { text-decoration:underline dotted #9bb6a4; text-underline-offset:5px; text-decoration-thickness:1px; }
+.lookup-token:hover, .lookup-token:focus-visible, .lookup-token.lookup-active { background:#dcece2; color:#174e39; outline:2px solid #82a38f; outline-offset:2px; }
+.lookup-dialog { box-sizing:border-box; width:min(620px,calc(100vw - 28px)); max-height:85dvh; padding:0 24px 20px; color:#1f2a24; background:#fffefa; border:1px solid #d8ddd3; border-radius:18px; box-shadow:0 24px 90px #182e3540; font:15px/1.75 system-ui,"Microsoft YaHei",sans-serif; overflow:auto; }
+.lookup-dialog::backdrop { background:#17291c60; }
+.lookup-top { position:sticky; top:0; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 0; background:#fffefa; border-bottom:1px solid #deded4; z-index:1; }
+.lookup-top span { color:#68736d; font-size:12px; }
+.lookup-dialog button:not(.lookup-token) { font:inherit; padding:7px 10px; border:1px solid #b6c6bc; border-radius:8px; background:#edf4ed; color:#1d6047; cursor:pointer; }
+.lookup-dialog button:focus-visible { outline:3px solid #3f6fa3; outline-offset:2px; }
+.lookup-dialog h2 { font-size:28px; margin:15px 0 0; overflow-wrap:anywhere; }
+.lookup-dialog h2 small { color:#68736d; font-size:18px; }
+.lookup-dialog h3 { font-size:15px; margin:18px 0 8px; }
+.lookup-dialog p { margin:8px 0; }
+.lookup-kind { color:#68736d; font-size:12px; }
+.lookup-meaning { font-size:19px; color:#1d6047; font-weight:650; }
+.lookup-meaning small { display:block; font-size:12px; font-weight:400; color:#68736d; }
+.lookup-note { font-size:13px; color:#526158; }
+.lookup-context, .lookup-phrase { padding:12px 15px; background:#f1f3ec; border-left:3px solid #1d6047; margin:14px 0; border-radius:6px; }
+.lookup-phrase h3 { margin-top:0; }
+.lookup-phrase strong { font:600 22px/1.6 Georgia,serif; }
+.lookup-forms { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; }
+.lookup-forms > div { border:1px solid #d8ddd3; border-radius:8px; padding:9px 6px; text-align:center; }
+.lookup-forms small { display:block; font-size:10px; }
+.lookup-forms b { font-family:Georgia,serif; overflow-wrap:anywhere; }
+.lookup-forms .current { border-color:#af6755; background:#f7e4df; }
+.lookup-pronouns { overflow-x:auto; }
+.lookup-pronouns table { min-width:440px; width:100%; border-collapse:collapse; text-align:left; font-size:12px; }
+.lookup-pronouns th, .lookup-pronouns td { padding:8px; border:1px solid #deded4; }
+.lookup-dialog details { margin-top:14px; }
+.lookup-dialog summary { color:#1d6047; cursor:pointer; }
+.lookup-original p { font:18px/1.8 Georgia,serif; }
+.lookup-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; }
+#lookupStatus { font-size:12px; color:#1d6047; }
+.sentence-original { font:22px/1.8 Georgia,serif; }
+.sentence-translation { font-size:17px; color:#1d6047; padding:12px; background:#edf4ed; border-radius:8px; }
+.sentence-trigger { display:inline-block; vertical-align:middle; margin:0 3px; border:1px solid #b7cbbb; border-radius:5px; padding:1px 5px; background:#edf4ed; color:#1d6047; font:12px/1.8 system-ui,sans-serif; cursor:pointer; }
+.sentence-trigger:focus-visible { outline:3px solid #3f6fa3; }
+.lookup-dialog button:disabled { opacity:.45; cursor:default; }
+.speech-settings { margin:0 0 8px; padding:8px 12px; border:1px solid #deded4; border-radius:10px; font:13px/1.7 system-ui,sans-serif; color:#526158; background:#fffefa; }
+.speech-settings summary { cursor:pointer; color:#1d6047; }
+.speech-settings p { margin:6px 0; }
+.speech-controls { display:flex; gap:8px; flex-wrap:wrap; margin:10px 0; }
+.speech-controls label { display:grid; gap:4px; max-width:100%; }
+.speech-controls select { max-width:min(380px,100%); min-width:0; }
+.speech-controls button,.speech-controls select,.speech-status-row button { padding:5px 8px; border:1px solid #b7cbbb; border-radius:6px; background:#fffefa; color:#1d6047; font:13px/1.5 system-ui,sans-serif; }
+.speech-status-row { display:flex; justify-content:space-between; gap:10px; font:12px/1.5 system-ui,sans-serif; color:#526158; margin:6px 0 12px; }
+.speech-status-row button { white-space:nowrap; margin-left:auto; cursor:pointer; }
+@media(max-width:600px) {
+  .lookup-dialog { padding:0 16px 18px; max-height:85dvh; }
+  .lookup-forms { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
